@@ -1,23 +1,32 @@
-import React from 'react';
-import HomePage from './Components/HomePage.js'
-import Links from './Components/Links.js'
+import React, { Component } from 'react';
+import Navbar from './components/Navbar'
+import { Route, BrowserRouter, Switch, Link} from 'react-router-dom'
+import Report from './components/Report'
+import ViewCases from './components/ViewCases'
+import HomePage from './components/HomePage'
+import FindTestLoc from './components/FindTestLoc'
 
 
-
-function App() {
-  return (
-    //<div>
-    <div>
-      <HomePage />
-      <Links />
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
       
+        <div className="App">
       
-    </div>
-      //<div>
-        //<Links></Links>
-      //</div>
-    //<///div>
-  );
+          <Navbar />
+          <Switch>
+            <Route path='/Report' render={() => <Report/>}/>
+            <Route path='/FindTestLoc' render={() => <FindTestLoc/>}/>
+            <Route path='/ViewCases' render={() => <ViewCases/>}/>
+            <Route path='/HomePage' render={() => <HomePage/>}/>
+            <Route path='/' render={() => <div></div>}/>
+
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
