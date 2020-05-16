@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 
 const Navbar = (props) => {
     return (
-        <nav>
+        <nav className="nav-wrapper blue">
             <div className="container">
                 <a className="brand-logo">Corona-Tracker</a>
                 <ul className="right">
