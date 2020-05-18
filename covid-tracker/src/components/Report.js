@@ -1,25 +1,58 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import ReportList from '../CaseData/ReportList' //Report list displays table with report data
 
 class Report extends Component {
+
+    state = {
+        name: '',
+        symptom: '',
+        city: '',
+        zip: ''
+    }
+    handleChange =(e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+         })
+    }
+    handleSubmit =(e) => {
+        e.preventDefault();
+        console.log(this.state)
+    }
     render () {
+        console.log(this.props);
         return (
             <div className="container">
                 <h4 className="center">Report Symptom</h4>
                 <form onSubmit={ this.handleSubmit }>
-                    <label>
-                        Enter your name:
-                        <input type="text" name="name" />
-                        Do you have a symptom?
-                        <input type="text" name="name" />
-                        Enter your city:
-                        <input type="text" name="name" />
-                        Enter zipcode:
-                        <input type="text" name="name" />
-                    </label>
+                    <div className="input-field">
+                        <label htmlFor="name">Enter your name</label>
+                        <input type="text" id="name" name ="name" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
+                    <label htmlFor="symptom">Do you have a symptom?</label>
+                        <input type="text" id="symptom" name="symptom" onChange={this.handleChange} />
+                    </div>    
+                    <div className="input-field"> 
+                    <label htmlFor="city">City</label>
+                        <input type="text" id="city" name="city" onChange={this.handleChange} />
+                    </div>
+                    <div className="input-field">     
+                    <label htmlFor="symptom">Zipcode</label>
+                        <input type="number" id="zip" name="zip" onChange={this.handleChange} />
+                    </div>
                     <input type="submit" value="Submit" />
-                </form>  
-            </div>
+                </form>
+            <ReportList/>  
+            </div> 
         )
     }
 }
-export default Report
+
+const mapStateToProps = (state) => {
+    return{
+        reports: state.report.reports
+    }
+}
+
+export default connect(mapStateToProps)(Report)
