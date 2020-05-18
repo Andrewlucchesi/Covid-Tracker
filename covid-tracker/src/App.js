@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import Cases from './components/Cases'
-import Info from './components/Info'
-import Report from './components/Report'
-
-class App extends Component{
-
-  render () {  
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Navbar />
-            <Route exact path='/' component={Home} />
-            <Route path='/cases' component={Cases} />
-            <Route path='/info' component={Info} />
-            <Route path='/report' component={Report} />
-        </div>
-      </BrowserRouter>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>
+          This is the first build of our app :)
+        </p>
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
-export default App; 
+export default App;
