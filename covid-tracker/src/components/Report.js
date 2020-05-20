@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ReportList from '../CaseData/ReportList' //Report list displays table with report data
+import ReportList from './reports/ReportList' //Report list displays table with report data
 
 class Report extends Component {
 
