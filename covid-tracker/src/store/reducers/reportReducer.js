@@ -7,6 +7,10 @@ const initState ={
 }
 
 const reportReducer = (state = initState, action) => {
+    switch (action.type){
+        case 'SUBMIT_REPORT':
+            console.log('submitted report', action.project)
+    }
     return state
 }
 

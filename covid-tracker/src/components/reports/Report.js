@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { submitReport } from '../../store/actions/reportActions'
 import ReportList from './ReportList' //Report list displays table with report data
 
 class Report extends Component {
@@ -17,7 +18,8 @@ class Report extends Component {
     }
     handleSubmit =(e) => {
         e.preventDefault();
-        console.log(this.state)
+       // console.log(this.state)
+       this.props.submitReport(this.state)
     }
     render () {
         return (
@@ -54,4 +56,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Report)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        submitReport: (report) => dispatch(submitReport(report))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Report)
