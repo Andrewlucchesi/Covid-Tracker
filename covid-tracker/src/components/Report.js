@@ -20,7 +20,6 @@ class Report extends Component {
         console.log(this.state)
     }
     render () {
-        console.log(this.props);
         return (
             <div className="container">
                 <h4 className="center">Report Symptom</h4>
