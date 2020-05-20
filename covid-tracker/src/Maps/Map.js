@@ -1,67 +1,24 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import React, { useState } from 'react';
+import GoogleMapReact from 'google-map-react';
+import Marker from './Marker';
 
-const mapStyles = {
-  width: '80%',
-  height: '50%'
-};
-
-export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
-
-  constructor(props) {
-    super(props)
-    this.state = {
-        stores: [{ lat: 34.06, lng: -118.44 }]
-      }
-  }
-
-  changeHandler = value => {
-      this.setState({ value })
-  }
-
-  handleChange = (e) => {
-      this.setState({
-          content: e.target.value
-      })
-  }
-  handleSubmit = (e) => {
-      e.preventDefault();
-      this.setState({
-          content: ''
-      })
-  }
-
-  displayMarkers = () => {
-      return this.state.stores.map((store, index) => {
-        return <Marker key={index} id={index} position={{
-          lat: store.latitude,
-          lng: store.longitude
-        }}
-        onClick={() => console.log("You clicked me!")} />
-      })
-  }
-
-  render() {
+const SimpleMap = (props => {
     return (
-      <div>
-        <Map
-          google={this.props.google}
-          // zoom={1}
-          style={mapStyles}
-          initialCenter={{ lat: 34.069479, lng: -118.445222 }}
+        <div style={{ height: '50vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyCW_Vioa3QR3TUnN6MuFdprCqabI055FZk' }}
+          defaultCenter={{lat: 39.8283, lng: -98.5795}}
+          defaultZoom={3.6}
         >
-          {this.displayMarkers()}
-        </Map>
+          <Marker
+            lat={39.8283}
+            lng={-98.5795}
+            name="My Marker"
+            color="red"
+          />
+        </GoogleMapReact>
       </div>
     );
-  }
-}
+})
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCW_Vioa3QR3TUnN6MuFdprCqabI055FZk'
-})(MapContainer);
+export default SimpleMap;
