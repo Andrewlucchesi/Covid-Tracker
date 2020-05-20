@@ -27,11 +27,7 @@ class Report extends Component {
                 <h4 className="center">Report Symptom</h4>
                 <form onSubmit={ this.handleSubmit }>
                     <div className="input-field">
-                        <label htmlFor="name">Enter your name</label>
-                        <input type="text" id="name" name ="name" onChange={this.handleChange}/>
-                    </div>
-                    <div className="input-field">
-                    <label htmlFor="symptom">Do you have a symptom?</label>
+                    <label htmlFor="symptom">Do you have covid-19?</label>
                         <input type="text" id="symptom" name="symptom" onChange={this.handleChange} />
                     </div>    
                     <div className="input-field"> 
