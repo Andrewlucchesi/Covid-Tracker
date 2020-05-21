@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { submitReport } from '../../store/actions/reportActions'
 import ReportList from './ReportList' //Report list displays table with report data
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 class Report extends Component {
 
@@ -20,6 +22,7 @@ class Report extends Component {
        this.props.submitReport(this.state)
     }
     render () {
+        const { reports } = this.props;
         return (
             
             <div className="container">
@@ -38,15 +41,16 @@ class Report extends Component {
                     </div>
                     <input type="submit" value="Report Case of Covid-19" />
                 </form>
-            <ReportList/>  
+
+                <ReportList reports={reports} /> 
             </div> 
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return{
-        reports: state.report.reports
+    return {
+        reports: state.firestore.ordered.reports
     }
 }
 
@@ -56,4 +60,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Report)
+//firestoreConnect triggers firebase-state to update when firebase collection changes
+export default compose(connect(mapStateToProps, mapDispatchToProps),
+firestoreConnect([
+    {collection: 'reports'} 
+]
+))(Report)
