@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
+import { Link } from 'react-router-dom'
+// import Select from 'react-select'
+// import countryList from 'react-select-country-list'
 import Map from '../Maps/Map'
+
   
 const mapStyles = {
   width: '80%',
@@ -16,7 +18,7 @@ class Home extends Component {
 
   constructor(props) {
     super(props)
-    this.options = countryList().getData()
+    // this.options = countryList().getData()
     this.state = {
       options: this.options,
       value: null,
@@ -26,19 +28,15 @@ class Home extends Component {
   render () {
     return (
       <div className="container">
-        <label>
+        {/* <label>
           <Select
             options={this.state.options}
             value={this.state.value}
             onChange={this.changeHandler}
           />
-        </label>
-        <Map 
-          google={this.props.google}
-          zoom={1}
-          style={mapStyles}
-          initialCenter={{ lat: 34.069479, lng: -118.445222 }}
-        />
+        </label> */}
+        <Link to="/" style={{ marginRight: 10 }}></Link>
+        <Map />
       </div>
     )
   }
