@@ -6,8 +6,6 @@ import ReportList from './ReportList' //Report list displays table with report d
 class Report extends Component {
 
     state = {
-        name: '',
-        symptom: '',
         city: '',
         zip: ''
     }
@@ -23,13 +21,13 @@ class Report extends Component {
     }
     render () {
         return (
+            
             <div className="container">
                 <h4 className="center">Report Symptom</h4>
-                <form onSubmit={ this.handleSubmit }>
-                    <div className="input-field">
-                    <label htmlFor="symptom">Do you have covid-19?</label>
-                        <input type="text" id="symptom" name="symptom" onChange={this.handleChange} />
-                    </div>    
+                <h7> If you or someone in your immediate family has contracted covid-19,
+                    you may use this page to report a diagnosis. </h7>
+                <p>This will be used to help track cases as they spread through local communities</p>
+                <form onSubmit={ this.handleSubmit }>  
                     <div className="input-field"> 
                     <label htmlFor="city">City</label>
                         <input type="text" id="city" name="city" onChange={this.handleChange} />
@@ -38,7 +36,7 @@ class Report extends Component {
                     <label htmlFor="symptom">Zipcode</label>
                         <input type="number" id="zip" name="zip" onChange={this.handleChange} />
                     </div>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Report Case of Covid-19" />
                 </form>
             <ReportList/>  
             </div> 
