@@ -1,34 +1,31 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import Map from '../Maps/Map'
 
+const mapStyles = {
+  width: '80%',
+  height: '50%'
+};
+
+// export class MapContainer extends Component {
 class Home extends Component {
-    state = {
-        content: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: this.options,
+      value: null,
+      CountryData: props.CountryData,
     }
-    handleChange = (e) => {
-        this.setState({
-            content: e.target.value
-        })
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.setState({
-            content: ''
-        })
-    }
-    render () {
-        return (
-            <div className="container">
-                <h4 className="center">Home</h4>
-                <form onSubmit={ this.handleSubmit }>
-                    <label>
-                        Enter zipcode:
-                        <input type="text" name="name" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                    <p>(Put map below.)</p>
-                </form>
-            </div>
-        )
-    }
+  }  
+
+  render () {
+    
+    return (
+      <div className="container">
+        <Link to="/" style={{ marginRight: 10 }}></Link>
+        <Map CountryData={this.state.CountryData}/>
+      </div>
+    )
+  }
 }
 export default Home

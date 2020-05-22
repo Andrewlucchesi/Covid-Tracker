@@ -3,7 +3,7 @@ import React from 'react'
 const Cases = () => {
     return (
         <div className="container">
-            <h4 className="center">Cases</h4>
+            <h5 className="center"></h5>
             <p>Total Cases:</p>
             <p>Weekly Cases:</p>
             <p>Daily Cases:</p>
