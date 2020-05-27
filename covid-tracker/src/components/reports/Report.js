@@ -39,6 +39,10 @@ class Report extends Component {
                     <label htmlFor="symptom">Zipcode</label>
                         <input type="number" id="zip" name="zip" onChange={this.handleChange} />
                     </div>
+                    <div className="input_field">
+                    <label htmlFor="country">Country</label>
+                        <input type="text" id="country" name="country" onChange={this.handleChange} />
+                    </div>
                     <input type="submit" value="Report Case of Covid-19" />
                 </form>
 
