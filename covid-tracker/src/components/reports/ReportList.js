@@ -1,7 +1,6 @@
 import React from 'react'
 //This creates a list of generated reports
-//Currently is filled with dummy data
-//Will likely be removed from future versions
+//Report list is called in Report.js to display data. 
 
 const ReportList = ({reports}) => {
 return (
