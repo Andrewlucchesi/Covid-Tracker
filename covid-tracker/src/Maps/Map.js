@@ -17,12 +17,13 @@ export class MapContainer extends Component {
     super(props);
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onClose = this.onClose.bind(this);
-    this.state = { countryLoc, 
-                  showingInfoWindow: false,
-                  activeMarker: {},
-                  selectedPlace: {},
-                  countryData: props.CountryData,
-                };
+    this.state = { 
+      countryLoc, 
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      countryData: props.CountryData,
+    };
     console.log(this.state.countryData);
   }
 
@@ -49,11 +50,10 @@ export class MapContainer extends Component {
     }
 
     this.setState({
-          
-          selectedPlace: text,
-          activeMarker: marker,
-          showingInfoWindow: true
-        });
+      selectedPlace: text,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
   }
 
 

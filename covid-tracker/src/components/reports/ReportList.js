@@ -4,18 +4,18 @@ import React from 'react'
 //Will likely be removed from future versions
 
 const ReportList = ({reports}) => {
-return (
+  return (
     <div className="report-list section">
-        {reports && reports.map(report => {
+      {reports && reports.map(report => {
         return(
-        <p>{report.zip} {report.city}</p>
+          <p>{report.zip} {report.city}</p>
         )
-        })}
+      })}
 
-       
+        
     </div>
 
-)
+  )
 }
 
 export default ReportList 
