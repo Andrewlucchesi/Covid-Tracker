@@ -7,7 +7,7 @@ import { compose } from 'redux'
 import { render } from 'react-dom';
 import Checkbox from './Checkbox'
 
-// const SYMPTOMS = ["Fever", "Cough", "Sore Throat", "Shortness of breath", "Fatigue", "New Loss of taste or smell","Muscle Aches"];
+const SYMPTOMS = ["Fever", "Cough", "Sore Throat", "Shortness of breath", "Fatigue", "New Loss of taste or smell","Muscle Aches"];
 
 class Report extends Component {
   
@@ -18,33 +18,33 @@ class Report extends Component {
     }
 
     state = {
-        city: '',
-        zip: '',
-    //     checkboxes: SYMPTOMS.reduce(
-    //         (symptoms, symptom) => ({
-    //           ...symptoms,
-    //           [symptom]: false
-    // }),
-    // {}
-    //     )
+      city: '',
+      zip: '',
+      checkboxes: SYMPTOMS.reduce(
+        (symptoms, symptom) => ({
+          ...symptoms,
+          [symptom]: false
+        }),
+        {}
+      )
     };
 
     handleCheck(e){
       this.setState({
-       checked: e.target.checked
+        checked: e.target.checked
       })
     }
 
     handleChange =(e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-         })
+      this.setState({
+        [e.target.id]: e.target.value
+      })
     }
 
     handleSubmit =(e) => {
-        e.preventDefault();
-       // console.log(this.state)
-       this.props.submitReport(this.state)
+      e.preventDefault();
+      // console.log(this.state)
+      this.props.submitReport(this.state)
     }
 
     // handleCheckboxChange = changeEvent => {
@@ -79,7 +79,7 @@ class Report extends Component {
           <p>This will be used to help track cases as they spread through local communities</p>
           
           <form onSubmit={ this.handleSubmit }> 
-            {/* {this.createCheckboxes()}  */}
+            {this.createCheckboxes()} 
               <div>
                 <input
                   id ="checkbox_id"
