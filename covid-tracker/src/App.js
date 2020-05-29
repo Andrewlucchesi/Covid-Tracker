@@ -8,8 +8,6 @@ import Info from './components/Info'
 import Testing from './components/Testing'
 import Report from './components/reports/Report'
 
-
-
 class App extends Component{
   
     
