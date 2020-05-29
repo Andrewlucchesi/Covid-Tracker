@@ -67,7 +67,7 @@ class Checkboxes extends Component {
         <div className="row mt-5">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
-              {this.createCheckboxes()}
+              {/* {this.createCheckboxes()} */}
 
               <div className="form-group mt-2">
               

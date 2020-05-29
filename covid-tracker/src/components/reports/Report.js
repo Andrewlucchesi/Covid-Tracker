@@ -47,27 +47,27 @@ class Report extends Component {
       this.props.submitReport(this.state)
     }
 
-    // handleCheckboxChange = changeEvent => {
-    //     const { name } = changeEvent.target;
+    handleCheckboxChange = changeEvent => {
+        const { name } = changeEvent.target;
     
-    //     this.setState(prevState => ({
-    //       checkboxes: {
-    //         ...prevState.checkboxes,
-    //         [name]: !prevState.checkboxes[name]
-    //       }
-    //     }));
-    //   };
+        this.setState(prevState => ({
+          checkboxes: {
+            ...prevState.checkboxes,
+            [name]: !prevState.checkboxes[name]
+          }
+        }));
+      };
 
-    // createCheckbox = option => (
-    //     <Checkbox
-    //       label={option}
-    //       isSelected={this.state.checkboxes[option]}
-    //       onCheckboxChange={this.handleCheckboxChange}
-    //       key={option}
-    //     />
-    //   );
+    createCheckbox = option => (
+        <Checkbox
+          label={option}
+          isSelected={this.state.checkboxes[option]}
+          onCheckboxChange={this.handleCheckboxChange}
+          key={option}
+        />
+      );
       
-    // createCheckboxes = () => SYMPTOMS.map(this.createCheckbox);
+    createCheckboxes = () => SYMPTOMS.map(this.createCheckbox);
 
     render () {
       const { reports } = this.props;
