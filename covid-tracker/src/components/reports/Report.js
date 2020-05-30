@@ -38,49 +38,49 @@ class Report extends Component {
               
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="fever" onChange={this.handleChange} />
                   <span>Fever</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="cough" onChange={this.handleChange} />
                   <span>Cough</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="soreThroat" onChange={this.handleChange} />
                   <span>Sore Throat</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="breath" onChange={this.handleChange} />
                   <span>Shortness of breath</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="fatigue" onChange={this.handleChange} />
                   <span>Fatigue</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="taste" onChange={this.handleChange} />
                   <span>New Loss of taste or smell</span>
                 </label>
               </p>
               
               <p>
                 <label>
-                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
+                  <input type="checkbox" id="muscle" onChange={this.handleChange} />
                   <span>Muscle Aches</span>
                 </label>
               </p>
