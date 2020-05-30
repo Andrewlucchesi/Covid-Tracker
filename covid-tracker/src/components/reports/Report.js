@@ -79,7 +79,7 @@ class Report extends Component {
               </p>
               
               <p>
-                <label>
+                <label >
                   <input type="checkbox" id="muscle" onChange={this.handleChange} />
                   <span>Muscle Aches</span>
                 </label>
@@ -91,7 +91,7 @@ class Report extends Component {
               </div>
 
               <div className="input-field">     
-                <label htmlFor="symptom">Zipcode</label>
+                <label htmlFor="zip">Zipcode</label>
                 <input type="number" id="zip" name="zip" onChange={this.handleChange} />
               </div>
 
