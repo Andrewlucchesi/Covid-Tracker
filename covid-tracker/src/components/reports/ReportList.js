@@ -7,7 +7,7 @@ return (
     <div className="report-list section">
         {reports && reports.map(report => {
         return(
-        <p>{report.zip} {report.city}</p>
+        <p>{report.zip} {report.city} {new Date(report.reportedAt.toDate()).toDateString()}</p>
         )
         })}
 
