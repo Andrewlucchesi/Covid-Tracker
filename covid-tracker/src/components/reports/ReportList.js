@@ -11,10 +11,7 @@ const ReportList = ({reports}) => {
           <p>{report.zip} {report.city}</p>
         )
       })}
-
-        
     </div>
-
   )
 }
 

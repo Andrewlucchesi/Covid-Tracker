@@ -13,10 +13,11 @@ var firebaseConfig = {
     messagingSenderId: "423491376714",
     appId: "1:423491376714:web:e9a2a5b6bdf94731b478b3",
     measurementId: "G-FX5R3P4QKN"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.firestore().settings({timestampsInSnapshots: true});
-  firebase.analytics();
+};
 
-  export default firebase;
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({timestampsInSnapshots: true});
+firebase.analytics();
+
+export default firebase;

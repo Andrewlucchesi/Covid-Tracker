@@ -9,8 +9,6 @@ import Testing from './components/Testing'
 import Report from './components/reports/Report'
 
 class App extends Component{
-  
-    
     state = {
       CountryData: [],
       CountyData: [],
@@ -18,36 +16,32 @@ class App extends Component{
       Disabled: true,
   }
 
-  
-
   async componentDidMount() {
-    
     const CountryData = await fetchCountryData();
     const CountyData = await fetchUSACountyData();
     const TestingLocs = await fetchTestingLocs();
     
     console.log(CountryData);
-    this.setState({ CountryData: CountryData,
-                    Disabled: false,
-                    CountyData: CountyData,
-                    TestingLocs: TestingLocs});
+    this.setState({ 
+      CountryData: CountryData,
+      Disabled: false,
+      CountyData: CountyData,
+      TestingLocs: TestingLocs});
   }
+
   render () {  
-    if((this.state.Disabled))
-      {
+    if((this.state.Disabled)){
         return <div></div>;
-      }
+    }
     
     return (
-      
       <BrowserRouter >
         <div className="App">
           <Navbar />
             <Route 
               exact path='/'
               render={(props) => <Home {...props} CountryData={this.state.CountryData} />} 
-              />
-            
+            />
             <Route path='/cases' component={Cases} />
             <Route 
               path='/info' 
@@ -56,8 +50,7 @@ class App extends Component{
             <Route
               path='/testing' 
               render={(props) => <Testing {...props} TestingLocs = {this.state.TestingLocs} />}
-              />
-
+            />
             <Route path='/report' component={Report} />
         </div>
       </BrowserRouter>
