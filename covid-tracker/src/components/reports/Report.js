@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { submitReport } from '../../store/actions/reportActions'
-import ReportList from './ReportList' //Report list displays table with report data
-import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { submitReport } from '../../store/actions/reportActions'
+
 import Symptom from './Symptom'
+// import Piechart from './Piechart'
+// import Pie from 'react-chartjs-2'
+
+//Report list displays table with report data
+import ReportList from './ReportList' 
 
 class Report extends Component {
 
@@ -51,6 +56,7 @@ class Report extends Component {
           <input type="submit" value="Report Case of Covid-19" />
         </form>
         <ReportList reports={reports} />  
+        {/* <Pie /> */}
       </div> 
     ) 
   }
