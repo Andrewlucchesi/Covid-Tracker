@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
 
-const mapStyles = {
-  width: '80%',
-  height: '50%'
-};
+// const mapStyles = {
+//   width: '80%',
+//   height: '50%'
+// };
 
-// export class MapContainer extends Component {
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -19,11 +18,10 @@ class Home extends Component {
   }  
 
   render () {
-    
     return (
       <div className="container">
         <Link to="/" style={{ marginRight: 10 }}></Link>
-        <Map CountryData={this.state.CountryData}/>
+        <Map CountryData={this.state.CountryData} />
       </div>
     )
   }

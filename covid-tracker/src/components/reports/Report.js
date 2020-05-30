@@ -9,7 +9,7 @@ class Report extends Component {
 
     state = {
       city: '',
-      zip: '',
+      zip: ''
     };
 
     handleChange =(e) => {
@@ -79,7 +79,7 @@ class Report extends Component {
               </p>
               
               <p>
-                <label >
+                <label>
                   <input type="checkbox" id="muscle" onChange={this.handleChange} />
                   <span>Muscle Aches</span>
                 </label>
