@@ -4,40 +4,17 @@ import { submitReport } from '../../store/actions/reportActions'
 import ReportList from './ReportList' //Report list displays table with report data
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { render } from 'react-dom';
-import Checkbox from './Checkbox'
-
-const SYMPTOMS = ["Fever", "Cough", "Sore Throat", "Shortness of breath", "Fatigue", "New Loss of taste or smell","Muscle Aches"];
 
 class Report extends Component {
-  
-    constructor(props) {
-      super(props);
-      this.state = { checked: false }
-      this.handleCheck = this.handleCheck.bind(this);
-    }
 
     state = {
       city: '',
       zip: '',
-      checkboxes: SYMPTOMS.reduce(
-        (symptoms, symptom) => ({
-          ...symptoms,
-          [symptom]: false
-        }),
-        {}
-      )
     };
-
-    handleCheck(e){
-      this.setState({
-        checked: e.target.checked
-      })
-    }
 
     handleChange =(e) => {
       this.setState({
-        [e.target.id]: e.target.value
+        [e.target.id]: e.target.value,
       })
     }
 
@@ -47,48 +24,66 @@ class Report extends Component {
       this.props.submitReport(this.state)
     }
 
-    handleCheckboxChange = changeEvent => {
-        const { name } = changeEvent.target;
-    
-        this.setState(prevState => ({
-          checkboxes: {
-            ...prevState.checkboxes,
-            [name]: !prevState.checkboxes[name]
-          }
-        }));
-      };
-
-    createCheckbox = option => (
-        <Checkbox
-          label={option}
-          isSelected={this.state.checkboxes[option]}
-          onCheckboxChange={this.handleCheckboxChange}
-          key={option}
-        />
-      );
-      
-    createCheckboxes = () => SYMPTOMS.map(this.createCheckbox);
-
     render () {
       const { reports } = this.props;
       return (
             
         <div className="container">
-          <h5 className="center">Report Symptom</h5>
-          <p> If you or someone in your immediate family has contracted covid-19, you may use this page to report a diagnosis. </p>
+          <h5 className="center">Report Case</h5>
+          <p>If you or someone in your immediate family has contracted covid-19, you may use this page to report a diagnosis. </p>
           <p>This will be used to help track cases as they spread through local communities</p>
           
           <form onSubmit={ this.handleSubmit }> 
-            {this.createCheckboxes()} 
-              <div>
-                <input
-                  id ="checkbox_id"
-                  type="checkbox"
-                  checked={this.state.checked}
-                  onChange={this.handleCheck}
-                />
-                <label htmlFor="checkbox_id"></label>
-              </div>
+              <label>Describe your symptom(s):</label>
+              
+              <p>
+                <label>
+                  <input type="checkbox"  />
+                  <span>Fever</span>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Cough</span>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Sore Throat</span>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Shortness of breath</span>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Fatigue</span>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>New Loss of taste or smell</span>
+                </label>
+              </p>
+              
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Muscle Aches</span>
+                </label>
+              </p>
 
               <div className="input-field"> 
                 <label htmlFor="city">City</label>
@@ -132,5 +127,3 @@ firestoreConnect([
   {collection: 'reports'} 
 ]
 ))(Report)
-
-render(<Checkbox />, document.getElementById('root'));
