@@ -38,49 +38,49 @@ class Report extends Component {
               
               <p>
                 <label>
-                  <input type="checkbox"  />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Fever</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Cough</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Sore Throat</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Shortness of breath</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Fatigue</span>
                 </label>
               </p>
 
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>New Loss of taste or smell</span>
                 </label>
               </p>
               
               <p>
                 <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" id="symptom" onChange={this.handleChange} />
                   <span>Muscle Aches</span>
                 </label>
               </p>
