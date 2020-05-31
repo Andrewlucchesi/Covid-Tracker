@@ -20,6 +20,16 @@ class Home extends Component {
   render () {
     return (
       <div className="container">
+        <h5 className="center">Search for Total Cases by Country</h5>
+            
+          <form onSubmit={ this.handleSubmit } >  
+            <div className="input-field"> 
+              <label htmlFor="city" style={{ marginBottom: 100}} >Enter a country</label>
+              <input type="text" />
+            </div>
+            <input type="submit" value="Search for total cases" />
+          </form>    
+
         <Link to="/" style={{ marginRight: 10 }}></Link>
         <Map CountryData={this.state.CountryData} />
       </div>

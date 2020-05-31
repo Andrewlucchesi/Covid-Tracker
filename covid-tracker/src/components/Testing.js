@@ -64,7 +64,7 @@ class Testing extends Component {
   render() {
     return (
       <div className="container">
-        <h4 className="center">Search for Testing Locations in California</h4>
+        <h5 className="center">Search for Testing Locations in California</h5>
           <form onSubmit={ this.handleSubmit }>  
             <div className="input-field"> 
               <label htmlFor="city">Enter a city in California</label>

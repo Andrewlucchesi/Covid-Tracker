@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
 class Symptom extends Component {  
+
   render() {
     return (
       <div>
-      
+        <p>Describe your symptom(s):</p>
         <p>
           <label>
             <input type="checkbox" id="fever" name="fever" onChange={this.handleChange} />

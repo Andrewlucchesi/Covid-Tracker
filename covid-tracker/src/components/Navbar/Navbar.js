@@ -4,7 +4,7 @@ import './Navbar.css'
 
 const Navbar = (props) => {
   return (
-    <nav className="nav-wrapper cyan">
+    <nav className="nav-wrapper red lighten-1">
       <div className="container">
         <a className="navbar-brand">Corona-Tracker</a>
         {/* <a className="brand-logo">Corona-Tracker</a> */}

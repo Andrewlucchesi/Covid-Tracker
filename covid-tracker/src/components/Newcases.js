@@ -6,13 +6,13 @@ import { firestoreConnect } from 'react-redux-firebase'
 class Newcases extends Component {
   
   render() {
-    console.log("Hello");
-    console.log("Hello again");
+    // console.log("Hello");
+    // console.log("Hello again");
     return (
       <div className="container">
-        <Link to="/newcases" style={{ marginRight: 10 }}></Link>
-        <Map CountryData={null}/>
-        <h4 className="center">Search for Recent Cases by Country</h4>
+        {/* <Link to="/newcases" style={{ marginRight: 10 }}></Link> */}
+        {/* <Map CountryData={null}/> */}
+        <h5 className="center">Search for Recent Cases by Country</h5>
             
         <form onSubmit={ this.handleSubmit } >  
           <div className="input-field"> 
@@ -21,6 +21,9 @@ class Newcases extends Component {
           </div>
           <input type="submit" value="Search for recent cases" />
         </form>    
+
+        <Link to="/newcases" style={{ marginRight: 10 }}></Link>
+        <Map CountryData={null}/>
       </div>
     )
   }

@@ -7,6 +7,7 @@ import Cases from './components/Cases'
 import Info from './components/Info'
 import Testing from './components/Testing'
 import Report from './components/reports/Report'
+import Newcases from './components/Newcases'
 
 class App extends Component{
     state = {
@@ -42,15 +43,16 @@ class App extends Component{
               exact path='/'
               render={(props) => <Home {...props} CountryData={this.state.CountryData} />} 
             />
-            <Route path='/cases' component={Cases} />
-            <Route 
-              path='/info' 
-              render={(props) => <Info {...props} CountryData={this.state.CountryData} CountyData={this.state.CountyData} />}
-            />
             <Route
               path='/testing' 
               render={(props) => <Testing {...props} TestingLocs = {this.state.TestingLocs} />}
             />
+            {/* <Route path='/cases' component={Cases} />
+            <Route 
+              path='/info' 
+              render={(props) => <Info {...props} CountryData={this.state.CountryData} CountyData={this.state.CountyData} />}
+            /> */}
+            <Route path='/newcases' component={Newcases} />
             <Route path='/report' component={Report} />
         </div>
       </BrowserRouter>
