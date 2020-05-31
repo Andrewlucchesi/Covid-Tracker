@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  fetchCountryData, fetchTestingLocs, fetchUSACountyData } from './api'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Cases from './components/Cases'
