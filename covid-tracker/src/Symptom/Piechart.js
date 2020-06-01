@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Pie from 'react-chartjs-2'
-import Symptom from './Symptom'
+// import Symptom from './Symptom'
 
 class Piechart extends Component {
   countType(type) {
@@ -33,7 +33,7 @@ class Piechart extends Component {
             1, 
             1
           ],
-            
+
           backgroundColor: [
             '#374c80', 
             '#6e5193', 
