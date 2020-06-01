@@ -22,13 +22,13 @@ class Home extends Component {
       <div className="container">
         <h4 className="center">Search for Total Cases by Country</h4>
             
-          <form onSubmit={ this.handleSubmit } >  
+          {/* <form onSubmit={ this.handleSubmit } >  
             <div className="input-field"> 
               <label htmlFor="city" style={{ marginBottom: 100}} >Enter a country</label>
               <input type="text" />
             </div>
             <input type="submit" value="Search for total cases" />
-          </form>    
+          </form>     */}
 
         <Link to="/" style={{ marginRight: 10 }}></Link>
         <Map CountryData={this.state.CountryData} />
