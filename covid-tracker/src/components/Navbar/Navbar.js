@@ -7,7 +7,6 @@ const Navbar = (props) => {
     <nav className="nav-wrapper red lighten-1">
       <div className="container">
         <a className="navbar-brand" href="/#">Corona-Tracker</a>
-        {/* <a className="brand-logo">Corona-Tracker</a> */}
         <ul className="right">
 
           <li><NavLink to="/">Home</NavLink></li>
