@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
 
-// const mapStyles = {
-//   width: '80%',
-//   height: '50%'
-// };
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +19,7 @@ class Home extends Component {
             
           {/* <form onSubmit={ this.handleSubmit } >  
             <div className="input-field"> 
-              <label htmlFor="city" style={{ marginBottom: 100}} >Enter a country</label>
+              <label htmlFor="country" style={{ marginBottom: 100}} >Enter a country</label>
               <input type="text" />
             </div>
             <input type="submit" value="Search for total cases" />
