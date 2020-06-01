@@ -10,7 +10,7 @@ const ReportList = ({reports}) => {
         {reports && reports.map(report => {
         return(
           <p key={report.id}>{report.zip} {report.city} {report.country}</p>
-        {/* report.reportedAt && <p>{report.zip} {report.city} {new Date(report.reportedAt.toDate()).toDateString()} </p> */}
+        // report.reportedAt && <p>{report.zip} {report.city} {new Date(report.reportedAt.toDate()).toDateString()} </p>
         )
         })}
     </div>
