@@ -5,8 +5,6 @@ class Checkbox extends Component {
   render() {
     return (
       <div>
-        <hr  style={{ color: '#9e9e9e', height: .1 }}/>
-        <h7>Describe your symptom(s):</h7>
         <p>
           <label>
             <input type="checkbox" id="fever" name="fever" onChange={this.handleChange} />
