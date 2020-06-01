@@ -1,4 +1,5 @@
-import React, {Component, useState} from 'react';
+// import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import countryLoc from './Country'
 
@@ -29,7 +30,7 @@ export class MapContainer extends Component {
     }
     else {
       for(const country of this.state.countryData){
-        if(country.CountryCode == props.country){
+        if(country.CountryCode === props.country){
           console.log(country.Country);
           text =  "Total Cases: " + country.TotalConfirmed + "\n Total Deaths: " + country.TotalDeaths;
           break;
