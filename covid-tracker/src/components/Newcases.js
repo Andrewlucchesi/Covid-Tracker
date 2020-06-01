@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
 
-
-const mapStyles = {
-  width: '80%',
-  height: '50%'
-};
+// const mapStyles = {
+//   width: '80%',
+//   height: '50%'
+// };
 
 class Newcases extends Component {
   
@@ -142,8 +140,8 @@ displayTable = () => {
   )
 }
   render () {
-    let isMap = true;
-    let isTable = false;
+    // let isMap = true;
+    // let isTable = false;
     return (
       <div>
       <p>Choose a map of recent cases by country or search for recent cases by city</p>
