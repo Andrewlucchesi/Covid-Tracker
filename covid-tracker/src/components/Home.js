@@ -20,7 +20,7 @@ class Home extends Component {
   render () {
     return (
       <div className="container">
-        <h5 className="center">Search for Total Cases by Country</h5>
+        <h4 className="center">Search for Total Cases by Country</h4>
             
           <form onSubmit={ this.handleSubmit } >  
             <div className="input-field"> 
