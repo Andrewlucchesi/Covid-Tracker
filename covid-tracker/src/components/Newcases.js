@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
-import { firestoreConnect } from 'react-redux-firebase'
+// import { firestoreConnect } from 'react-redux-firebase'
 
 class Newcases extends Component {
   
