@@ -8,13 +8,12 @@ import { compose } from 'redux'
 class Report extends Component {
 
     state = {
-        city: '',
-        zip: ''
     }
     handleChange =(e) => {
         this.setState({
             [e.target.id]: e.target.value
-         })
+            
+         })       
     }
     handleSubmit =(e) => {
         e.preventDefault();
@@ -47,6 +46,8 @@ class Report extends Component {
         ) 
     }
 }
+
+//Create queried report collection
 
 //Updates props when store changes. Takes reports data from store.
 const mapStateToProps = (state) => {
