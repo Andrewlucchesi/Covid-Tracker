@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
 import ReportList from './ReportList' //Report list displays table with report data
+import Checkbox from '../../Symptom/Checkbox'
+import Piechart from '../../Symptom/Piechart'
+
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { submitReport } from '../../store/actions/reportActions'
 
-import Checkbox from '../../symptom/Checkbox'
-import Piechart from '../../symptom/Piechart'
-//Report list displays table with report data
-import ReportList from './ReportList' 
-
 class Report extends Component {
 
-    state = {
-    }
+    state = {}
+
     handleChange =(e) => {
         this.setState({
             [e.target.id]: e.target.value
             
          })       
     }
+
     handleSubmit =(e) => {
         e.preventDefault();
        // console.log(this.state)
        this.props.submitReport(this.state)
     }
+
     render () {
         const { reports } = this.props;
         return (
@@ -35,24 +35,26 @@ class Report extends Component {
                     you may use this page to report a diagnosis. </h5>
                 <p>This will be used to help track cases as they spread through local communities</p>
                 <form onSubmit={ this.handleSubmit }>
+                    <label>Describe your symptom(s):</label>
                     <Checkbox />  
                     <div className="input-field"> 
-                    <label htmlFor="city">City</label>
-                        <input type="text" id="city" name="city" onChange={this.handleChange} />
+                      <label htmlFor="city">City</label>
+                      <input type="text" id="city" name="city" onChange={this.handleChange} />
                     </div>
                     <div className="input-field">     
-                    <label htmlFor="symptom">Zipcode</label>
+                      <label htmlFor="symptom">Zipcode</label>
                         <input type="number" id="zip" name="zip" onChange={this.handleChange} />
                     </div>
                     <div className="input_field">
-                    <label htmlFor="country">Country Code</label>
-                        <input type="text" id="Country_Code" name="country" onChange={this.handleChange} />
+                      <label htmlFor="country">Country Code</label>
+                      <input type="text" id="Country_Code" name="country" onChange={this.handleChange} />
                     </div>
                     <input type="submit" value="Report Case of Covid-19" />
                 </form>
-                
-             <p>Recently Reported Cases (Past 24 Hours)</p>   <ReportList reports={reports} />  
-             <Piechart />
+
+                <p>Recently Reported Cases (Past 24 Hours):</p>   
+                <ReportList reports={reports} />  
+                <Piechart />
             </div> 
         ) 
     }
