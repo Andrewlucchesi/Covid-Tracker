@@ -20,7 +20,7 @@ export class MapContainer extends Component {
     this.state = { countryLoc, 
                   showingInfoWindow: false,
                   activeMarker: {},
-                  selectedPlace: {},
+                  selectedPlace: "",
                   countryData: props.CountryData,
                 };
     console.log(this.state.countryData);
@@ -30,8 +30,9 @@ export class MapContainer extends Component {
   
 
   onMarkerClick(props, marker, e) {
-    let text;
-    if(this.state.countryData === null)
+    let text = "";
+    console.log(this.state.countryData);
+    if(this.state.countryData == null)
     {
       text = "Sorry, data is not available right now. Please try later";
     }
@@ -48,6 +49,10 @@ export class MapContainer extends Component {
       }
     }
 
+    if(text === "")
+    {
+      text = "No new data";
+    }
     this.setState({
           
           selectedPlace: text,
@@ -83,23 +88,13 @@ export class MapContainer extends Component {
         // onClick={() => console.log("Hello")}
         >
           
-         </Marker>,
-        // <InfoWindow
-        //   onCloseClick={this.onClose}
-        //   marker={this.state.activeMarker}
-        //   visible={this.state.showingInfoWindow}
-          
-        //   >
-        //     <div>
-        //       <h4>{this.state.selectedPlace}</h4>
-        //     </div>
-          
-        //   </InfoWindow>  
+         </Marker>, 
       ]}).concat(
          <InfoWindow
           onCloseClick={this.onClose}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
+          key={"InfoWindow"}
           
           >
             <div>
@@ -118,10 +113,7 @@ export class MapContainer extends Component {
   
 
   render() {
-    // if((this.state.Disabled))
-    //   {
-    //     return <div></div>;
-    //   }
+    
     return (
         <Map
           google={this.props.google}
