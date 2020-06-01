@@ -5,7 +5,6 @@ import React from 'react'
 const ReportList = ({reports}) => {
     console.log(reports);
   return (
-    
     <div className="report-list section">
       {reports && reports.map(report => {
         return(
