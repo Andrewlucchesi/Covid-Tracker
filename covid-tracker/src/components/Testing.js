@@ -26,7 +26,7 @@ class Testing extends Component {
         if(!this.state.showText)
         {
             return(
-                <div></div>
+                <tbody></tbody>
             )
         }
 
@@ -56,7 +56,11 @@ class Testing extends Component {
                 <p>Sorry, we couldn't find any testing locations in that city</p>
             )
         }
-        return table;
+        else
+        {
+            return table;
+        }
+        
         
     }
     
