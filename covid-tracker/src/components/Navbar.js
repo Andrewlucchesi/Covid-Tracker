@@ -8,10 +8,8 @@ const Navbar = (props) => {
                 <a className="brand-logo">Corona-Tracker</a>
                 <ul className="right">
                     <li><NavLink to="/">Home</NavLink></li>
-                    {/* <li><NavLink to="/cases">Cases</NavLink></li> */}
-                    {/* <li><NavLink to="/info">Info</NavLink></li> */}
-                    <li><NavLink to="/testing">Testing</NavLink></li>
-                    <li><NavLink to="/newcases">Newcases</NavLink></li>
+                    <li><NavLink to="/testing">Testing Locations</NavLink></li>
+                    <li><NavLink to="/newcases">Recently Reported Cases</NavLink></li>
                     <li><NavLink to="/report">Report</NavLink></li>
                 </ul>
             </div>
