@@ -50,7 +50,7 @@ class Piechart extends Component {
     return (
       <div>
         <hr  style={{ color: '#9e9e9e', height: .1,}}/>
-        <p>Symptom Statistics:</p>
+        <h6>Symptom Statistics:</h6>
         <Pie
           data={{
             labels: this.state.labels,
