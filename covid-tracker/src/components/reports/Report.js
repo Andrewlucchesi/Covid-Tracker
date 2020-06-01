@@ -51,7 +51,8 @@ class Report extends Component {
             <input type="submit" value="Report Case of Covid-19" />
           </form>
 
-          <p>Recently Reported Cases (Past 24 Hours):</p>   
+          <h4 className="center">Reported Data</h4>
+          <h6>Recently Reported Cases (Past 24 Hours):</h6>   
           <ReportList reports={reports} />  
           <Piechart />
         </div> 
