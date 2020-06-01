@@ -8,13 +8,12 @@ import { submitReport } from '../../store/actions/reportActions'
 class Report extends Component {
 
     state = {
-        city: '',
-        zip: ''
     }
     handleChange =(e) => {
         this.setState({
             [e.target.id]: e.target.value
-         })
+            
+         })       
     }
     handleSubmit =(e) => {
         e.preventDefault();
@@ -46,11 +45,13 @@ class Report extends Component {
                     <input type="submit" value="Report Case of Covid-19" />
                 </form>
                 
-                <ReportList reports={reports} />  
+             <p>Recently Reported Cases (Past 24 Hours)</p>   <ReportList reports={reports} />  
             </div> 
         ) 
     }
 }
+
+//Create queried report collection
 
 //Updates props when store changes. Takes reports data from store.
 const mapStateToProps = (state) => {
@@ -70,9 +71,12 @@ const mapDispatchToProps = (dispatch) => {
 //firestoreConnect triggers firebase-state to update when firebase collection changes
 //Redux Uses reducers to manage states. 
 
-//firestore connect listens to firebase, and updates store accordining;y
+//86400000 is 1 day in ms
+var beginningDate = Date.now() - 86400000;
+var beginningDateObject = new Date(beginningDate);
+//firestore connect listens to firebase, and updates store accordiningly
 export default compose(connect(mapStateToProps, mapDispatchToProps),
 firestoreConnect([
-    {collection: 'reports'} 
+    {collection: 'reports', where:['reportedAt', '>', beginningDateObject]} 
 ]
 ))(Report)

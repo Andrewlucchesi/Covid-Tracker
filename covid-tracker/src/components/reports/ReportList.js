@@ -4,19 +4,17 @@ import React from 'react'
 
 const ReportList = ({reports}) => {
     console.log(reports);
-return (
+  return (
     
     <div className="report-list section">
         {reports && reports.map(report => {
         return(
-        <p key={report.id}>{report.zip} {report.city} {report.country}</p>
+          <p key={report.id}>{report.zip} {report.city} {report.country}</p>
+        {/* report.reportedAt && <p>{report.zip} {report.city} {new Date(report.reportedAt.toDate()).toDateString()} </p> */}
         )
         })}
-
-       
     </div>
-
-)
+  )
 }
 
 export default ReportList 
