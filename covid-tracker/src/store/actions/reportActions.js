@@ -6,7 +6,7 @@ export const submitReport = (report) => {
         const firestore = getFirestore();
         firestore.collection('reports').add({
             ...report, 
-            reportedAt: new Date()
+            reportedAt: firestore.FieldValue.serverTimestamp()
         }).then(()=>{
             dispatch({  type: 'SUBMIT_REPORT', report});
         }).catch((err) =>{
