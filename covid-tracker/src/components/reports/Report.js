@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { submitReport } from '../../store/actions/reportActions'
 
-import Symptom from '../../symptom/Symptom'
+import Checkbox from '../../symptom/Checkbox'
 import Piechart from '../../symptom/Piechart'
 //Report list displays table with report data
 import ReportList from './ReportList' 
@@ -33,12 +33,12 @@ class Report extends Component {
     return (
             
       <div className="container">
-        <h5 className="center">Report Case</h5>
-        <p>If you or someone in your immediate family has contracted covid-19, you may use this page to report a diagnosis.</p>
-        <p>This will be used to help track cases as they spread through local communities.</p>
-          
+        <h4 className="center">Report Case</h4>
+        <h7>If you or someone in your immediate family has contracted covid-19, you may use this page to report a diagnosis.</h7>
+        <h7>This will be used to help track cases as they spread through local communities.</h7>
+
         <form onSubmit={ this.handleSubmit }> 
-          <Symptom />
+          <Checkbox />
           <div className="input-field"> 
             <label htmlFor="city">City</label>
             <input type="text" id="city" name="city" onChange={this.handleChange} />
