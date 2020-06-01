@@ -6,7 +6,6 @@ import { submitReport } from '../../store/actions/reportActions'
 
 import Symptom from '../../symptom/Symptom'
 import Piechart from '../../symptom/Piechart'
-
 //Report list displays table with report data
 import ReportList from './ReportList' 
 
