@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 import Map from '../Maps/Map'
-import { Link } from 'react-router-dom'
-
-// const mapStyles = {
-//   width: '80%',
-//   height: '50%'
-// };
 
 class Newcases extends Component {
   
@@ -155,33 +149,8 @@ displayTable = () => {
       {this.state.showMap && <Map CountryData={this.state.Data}/>}
       {this.state.showTable && this.displayTable()}
       </div>
-      
-      
-      
     )
   }
-
-  // render() {
-  //   return (
-  //     <div className="container">
-  //       {/* <Link to="/newcases" style={{ marginRight: 10 }}></Link> */}
-  //       {/* <Map CountryData={null}/> */}
-  //       <h4 className="center">Search for Recent Cases by Country</h4>
-            
-  //       <form onSubmit={ this.handleSubmit } >  
-  //         <div className="input-field"> 
-  //           <label htmlFor="city" style={{ marginBottom: 100}} >Enter a country</label>
-  //           <input type="text" />
-  //         </div>
-  //         <input type="submit" value="Search for recent cases" />
-  //       </form>    
-
-  //       <Link to="/newcases" style={{ marginRight: 10 }}></Link>
-  //       <Map CountryData={null}/>
-  //     </div>
-  //   )
-  // }
-
 }
 
 export default Newcases
