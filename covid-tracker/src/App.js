@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+
 import {  fetchCountryData, fetchTestingLocs, fetchUSACountyData } from './api'
 import Navbar from './components/Navbar/Navbar'
-import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './components/Home'
-// import Cases from './components/Cases'
-// import Info from './components/Info'
 import Testing from './components/Testing'
 import Report from './components/reports/Report'
 import Newcases from './components/Newcases'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
-
-
 
 class App extends Component{
     state = {
@@ -22,25 +19,28 @@ class App extends Component{
       Disabled: true,
       Reports: [],
   }
-
   
 componentDidMount = async () => {
     
     const CountryData = await fetchCountryData();
     const CountyData = await fetchUSACountyData();
     const TestingLocs = await fetchTestingLocs();
-    this.setState({ CountryData: CountryData,
-                    Disabled: false,
-                    CountyData: CountyData,
-                    TestingLocs: TestingLocs});
+
+    this.setState({ 
+      CountryData: CountryData,
+      Disabled: false,
+      CountyData: CountyData,
+      TestingLocs: TestingLocs});
   }
 
   render () {  
     if((this.state.Disabled)){
         return <div></div>;
-      }
+    }
+
     const { reports } = this.props;
     console.log(reports);
+    
     return (
       <BrowserRouter >
         <div className="App">
@@ -57,7 +57,6 @@ componentDidMount = async () => {
               path='/newcases'
               render={(props) => <Newcases {...props} Data={reports} />}
               /> 
-
              <Route path='/report' component={Report} />
         </div>
       </BrowserRouter>
@@ -67,7 +66,7 @@ componentDidMount = async () => {
 
 const mapStateToProps = (state) => {
   return {
-      reports: state.firestore.ordered.reports
+    reports: state.firestore.ordered.reports
   }
 }
 
