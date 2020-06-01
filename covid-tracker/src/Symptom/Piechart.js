@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Pie from 'react-chartjs-2'
-// import Symptom from './Symptom'
 
 class Piechart extends Component {
   countType(type) {
@@ -14,13 +13,13 @@ class Piechart extends Component {
     super(props)
       this.state = {
         labels: [
-            'Fever', 
-            'Cough', 
-            'Sore Throat', 
-            'Shortness of breath', 
-            'Fatigue',
-            'New Loss of taste or smell',
-            'Muscle Aches'
+          'Fever', 
+          'Cough', 
+          'Sore Throat', 
+          'Shortness of breath', 
+          'Fatigue',
+          'New Loss of taste or smell',
+          'Muscle Aches'
         ],
 
         datasets: [{
