@@ -45,19 +45,21 @@ class Report extends Component {
                     </div>
                     <input type="submit" value="Report Case of Covid-19" />
                 </form>
-
-                <ReportList reports={reports} /> 
+                
+                <ReportList reports={reports} />  
             </div> 
-        )
+        ) 
     }
 }
 
+//Updates props when store changes. Takes reports data from store.
 const mapStateToProps = (state) => {
     return {
         reports: state.firestore.ordered.reports
     }
 }
 
+//Dispatches actions to the store: submits report when submitreport button is pressed
 const mapDispatchToProps = (dispatch) => {
     return {
         submitReport: (report) => dispatch(submitReport(report))
@@ -66,6 +68,9 @@ const mapDispatchToProps = (dispatch) => {
 
 
 //firestoreConnect triggers firebase-state to update when firebase collection changes
+//Redux Uses reducers to manage states. 
+
+//firestore connect listens to firebase, and updates store accordining;y
 export default compose(connect(mapStateToProps, mapDispatchToProps),
 firestoreConnect([
     {collection: 'reports'} 
