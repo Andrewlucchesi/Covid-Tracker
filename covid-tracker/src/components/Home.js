@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
 
-const mapStyles = {
-  width: '80%',
-  height: '50%'
-};
+// const mapStyles = {
+//   width: '80%',
+//   height: '50%'
+// };
 
 // export class MapContainer extends Component {
 class Home extends Component {
