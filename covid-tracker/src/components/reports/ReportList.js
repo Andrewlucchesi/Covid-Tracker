@@ -7,7 +7,7 @@ const ReportList = ({reports}) => {
   return (
     
     <div className="report-list section">
-        {reports && reports.map(report => {
+      {reports && reports.map(report => {
         return(
           <p key={report.id}>{report.zip} {report.city} {report.country}</p>
         // report.reportedAt && <p>{report.zip} {report.city} {new Date(report.reportedAt.toDate()).toDateString()} </p>

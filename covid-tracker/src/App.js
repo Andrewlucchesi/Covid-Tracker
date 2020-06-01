@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {  fetchCountryData, fetchTestingLocs, fetchUSACountyData } from './api'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './components/Home'
-import Cases from './components/Cases'
-import Info from './components/Info'
+// import Cases from './components/Cases'
+// import Info from './components/Info'
 import Testing from './components/Testing'
 import Report from './components/reports/Report'
 import Newcases from './components/Newcases'
@@ -15,8 +15,6 @@ import { connect } from 'react-redux'
 
 
 class App extends Component{
-  
-    
     state = {
       CountryData: [],
       CountyData: [],
@@ -38,8 +36,7 @@ componentDidMount = async () => {
   }
 
   render () {  
-    if((this.state.Disabled))
-      {
+    if((this.state.Disabled)){
         return <div></div>;
       }
     const { reports } = this.props;
@@ -51,12 +48,6 @@ componentDidMount = async () => {
             <Route 
               exact path='/'
               render={(props) => <Home {...props} CountryData={this.state.CountryData} />} 
-              />
-            
-            <Route path='/cases' component={Cases} />
-            <Route 
-              path='/info' 
-              render={(props) => <Info {...props} CountryData={this.state.CountryData} CountyData={this.state.CountyData} />}
             />
             <Route
               path='/testing' 

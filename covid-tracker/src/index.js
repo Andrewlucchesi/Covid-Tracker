@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import fbConfig from './config/fbconfig'
+
 import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from './store/reducers/rootReducer'
 import { Provider } from 'react-redux'
@@ -11,13 +14,16 @@ import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-fir
 import { getFirebase, ReactReduxFirebaseProvider } from 'react-redux-firebase'
 import fbConfig from './config/fbconfig'
 import firebase from "firebase/app"
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore'
+import { getFirebase, ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 const store = createStore(rootReducer,
-   compose(
-     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-     reduxFirestore(fbConfig),
-   )
-  );
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+    reduxFirestore(fbConfig),
+  )
+);
+
 const rrfProps ={
   firebase,
   config: fbConfig,

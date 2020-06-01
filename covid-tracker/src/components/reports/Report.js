@@ -5,6 +5,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { submitReport } from '../../store/actions/reportActions'
 
+import Checkbox from '../../symptom/Checkbox'
+import Piechart from '../../symptom/Piechart'
+//Report list displays table with report data
+import ReportList from './ReportList' 
+
 class Report extends Component {
 
     state = {
@@ -29,7 +34,8 @@ class Report extends Component {
                 <h5> If you or someone in your immediate family has contracted covid-19,
                     you may use this page to report a diagnosis. </h5>
                 <p>This will be used to help track cases as they spread through local communities</p>
-                <form onSubmit={ this.handleSubmit }>  
+                <form onSubmit={ this.handleSubmit }>
+                    <Checkbox />  
                     <div className="input-field"> 
                     <label htmlFor="city">City</label>
                         <input type="text" id="city" name="city" onChange={this.handleChange} />
@@ -46,27 +52,25 @@ class Report extends Component {
                 </form>
                 
              <p>Recently Reported Cases (Past 24 Hours)</p>   <ReportList reports={reports} />  
+             <Piechart />
             </div> 
         ) 
     }
 }
 
-//Create queried report collection
-
 //Updates props when store changes. Takes reports data from store.
 const mapStateToProps = (state) => {
-    return {
-        reports: state.firestore.ordered.reports
-    }
+  return {
+    reports: state.firestore.ordered.reports
+  }
 }
 
 //Dispatches actions to the store: submits report when submitreport button is pressed
 const mapDispatchToProps = (dispatch) => {
-    return {
-        submitReport: (report) => dispatch(submitReport(report))
-    }
+  return {
+    submitReport: (report) => dispatch(submitReport(report))
+  }
 }
-
 
 //firestoreConnect triggers firebase-state to update when firebase collection changes
 //Redux Uses reducers to manage states. 

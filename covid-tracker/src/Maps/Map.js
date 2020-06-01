@@ -2,17 +2,10 @@ import React, {Component} from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import countryLoc from './Country'
 
-
-
-const mapStyles = {
-  width: '80%',
-  height: '70%',
-};
-
-
-
+const mapStyles = { width: '80%', height: '70%' };
 
 export class MapContainer extends Component {
+
   constructor(props) {
     super(props);
     this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -25,9 +18,6 @@ export class MapContainer extends Component {
                 };
     console.log(this.state.countryData);
   }
-
-  
-  
 
   onMarkerClick(props, marker, e) {
     let text = "";
@@ -54,13 +44,11 @@ export class MapContainer extends Component {
       text = "No new data";
     }
     this.setState({
-          
-          selectedPlace: text,
-          activeMarker: marker,
-          showingInfoWindow: true
-        });
+      selectedPlace: text,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
   }
-
 
   onClose = props => {
     if(this.state.showingInfoWindow) {
@@ -77,25 +65,17 @@ export class MapContainer extends Component {
         <Marker 
           key={index} 
           id={index} 
-          position={{
-            lat: location.latitude,
-            lng: location.longitude
-          }}
+          position={{ lat: location.latitude, lng: location.longitude }}
           onClick={this.onMarkerClick}
-          
           country={location.countryCode}
-          
         // onClick={() => console.log("Hello")}
-        >
-          
-         </Marker>, 
+        />,
       ]}).concat(
-         <InfoWindow
+        <InfoWindow
           onCloseClick={this.onClose}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           key={"InfoWindow"}
-          
           >
             <div>
               <h4>{this.state.selectedPlace}</h4>
@@ -103,26 +83,19 @@ export class MapContainer extends Component {
           
           </InfoWindow> 
       ) 
-      
-      
-      
-
-    
   }
-
-  
 
   render() {
     
     return (
-        <Map
-          google={this.props.google}
-          zoom={1}
-          style={mapStyles}
-          initialCenter={{ lat: 39.8283, lng: -98.5795}}
-        >
-          {this.displayMarkers()}
-        </Map> 
+      <Map
+        google={this.props.google}
+        zoom={1}
+        style={mapStyles}
+        initialCenter={{ lat: 39.8283, lng: -98.5795}}
+      >
+        {this.displayMarkers()}
+      </Map> 
     );
   }
 }
