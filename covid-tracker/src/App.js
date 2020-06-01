@@ -7,6 +7,10 @@ import Cases from './components/Cases'
 import Info from './components/Info'
 import Testing from './components/Testing'
 import Report from './components/reports/Report'
+import Newcases from './components/Newcases'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
 
 
@@ -18,30 +22,29 @@ class App extends Component{
       CountyData: [],
       TestingLocs: [],
       Disabled: true,
+      Reports: [],
   }
 
   
-
-  async componentDidMount() {
+componentDidMount = async () => {
     
     const CountryData = await fetchCountryData();
     const CountyData = await fetchUSACountyData();
     const TestingLocs = await fetchTestingLocs();
-    
-    console.log(CountryData);
     this.setState({ CountryData: CountryData,
                     Disabled: false,
                     CountyData: CountyData,
                     TestingLocs: TestingLocs});
   }
+
   render () {  
     if((this.state.Disabled))
       {
         return <div></div>;
       }
-    
+    const { reports } = this.props;
+    console.log(reports);
     return (
-      
       <BrowserRouter >
         <div className="App">
           <Navbar />
@@ -59,12 +62,28 @@ class App extends Component{
               path='/testing' 
               render={(props) => <Testing {...props} TestingLocs = {this.state.TestingLocs} />}
               />
+            <Route
+              path='/newcases'
+              render={(props) => <Newcases {...props} Data={reports} />}
+              /> 
 
-            <Route path='/report' component={Report} />
+             <Route path='/report' component={Report} />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-export default App; 
+const mapStateToProps = (state) => {
+  return {
+      reports: state.firestore.ordered.reports
+  }
+}
+
+//firestoreConnect triggers firebase-state to update when firebase collection changes
+export default compose(connect(mapStateToProps),
+firestoreConnect([
+  {collection: 'reports'} 
+]
+))(App)
+
