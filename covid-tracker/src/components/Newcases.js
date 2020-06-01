@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Map from '../Maps/Map'
+import { Link } from 'react-router-dom'
 // import { firestoreConnect } from 'react-redux-firebase'
 
 class Newcases extends Component {
@@ -12,7 +12,7 @@ class Newcases extends Component {
       <div className="container">
         {/* <Link to="/newcases" style={{ marginRight: 10 }}></Link> */}
         {/* <Map CountryData={null}/> */}
-        <h5 className="center">Search for Recent Cases by Country</h5>
+        <h4 className="center">Search for Recent Cases by Country</h4>
             
         <form onSubmit={ this.handleSubmit } >  
           <div className="input-field"> 
