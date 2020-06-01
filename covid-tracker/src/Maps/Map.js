@@ -1,7 +1,8 @@
 import React, {Component, useState} from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import countryLoc from './Country'
-// import {fetchCountryData} from '../api'
+
+
 
 const mapStyles = {
   width: '80%',
@@ -17,49 +18,49 @@ export class MapContainer extends Component {
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onClose = this.onClose.bind(this);
     this.state = { countryLoc, 
-                  isOpen: false,
                   showingInfoWindow: false,
                   activeMarker: {},
-                  selectedPlace: {},
-                  Disabled: true,
+                  selectedPlace: "",
                   countryData: props.CountryData,
                 };
     console.log(this.state.countryData);
   }
 
-  componentDidMount() {
-    this.setState({
-      Disabled: false
-    })
-  }
-  getInitialState() {
-    return {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: "",
-    }
-  }
+  
+  
 
   onMarkerClick(props, marker, e) {
-    
-    for(const country of this.state.countryData)
+    let text = "";
+    console.log(this.state.countryData);
+    if(this.state.countryData == null)
     {
-      if(country.CountryCode == props.country)
+      text = "Sorry, data is not available right now. Please try later";
+    }
+    else
+    {
+      for(const country of this.state.countryData)
       {
-        console.log(country.Country);
-        let text =  "Total Cases: " + country.TotalConfirmed + "\n Total Deaths: " + country.TotalDeaths;
+        if(country.CountryCode == props.country)
+        {
+          console.log(country.Country);
+          text =  "Total Cases: " + country.TotalConfirmed + "\n Total Deaths: " + country.TotalDeaths;
+          break;
+        }
+      }
+    }
 
-        this.setState({
+    if(text === "")
+    {
+      text = "No new data";
+    }
+    this.setState({
           
           selectedPlace: text,
           activeMarker: marker,
           showingInfoWindow: true
         });
-        return;
-      }
-    }
-    
   }
+
 
   onClose = props => {
     if(this.state.showingInfoWindow) {
@@ -87,32 +88,32 @@ export class MapContainer extends Component {
         // onClick={() => console.log("Hello")}
         >
           
-         </Marker>,
-        <InfoWindow
+         </Marker>, 
+      ]}).concat(
+         <InfoWindow
           onCloseClick={this.onClose}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
+          key={"InfoWindow"}
           
           >
             <div>
               <h4>{this.state.selectedPlace}</h4>
             </div>
           
-          </InfoWindow>  
-      ]
+          </InfoWindow> 
+      ) 
+      
       
       
 
-    })
+    
   }
 
   
 
   render() {
-    if((this.state.Disabled))
-      {
-        return null;
-      }
+    
     return (
         <Map
           google={this.props.google}

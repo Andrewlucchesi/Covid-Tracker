@@ -4,11 +4,13 @@ import React from 'react'
 //Will likely be removed from future versions
 
 const ReportList = ({reports}) => {
+    console.log(reports);
 return (
+    
     <div className="report-list section">
         {reports && reports.map(report => {
         return(
-        <p>{report.zip} {report.city}</p>
+        <p key={report.id}>{report.zip} {report.city} {report.country}</p>
         )
         })}
 
