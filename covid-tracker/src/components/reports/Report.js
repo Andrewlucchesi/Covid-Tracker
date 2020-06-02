@@ -35,13 +35,13 @@ class Report extends Component {
           
           <form onSubmit={ this.handleSubmit }>
             <label>Describe your symptom(s):</label>
-            <Checkbox />  
+            <Checkbox onChange={this.handleChange} />  
             <div className="input-field"> 
               <label htmlFor="city">City</label>
                 <input type="text" id="city" name="city" onChange={this.handleChange} />
             </div>
             <div className="input-field">     
-              <label htmlFor="symptom">Zipcode</label>
+              <label htmlFor="Zipcode">Zipcode</label>
                 <input type="number" id="zip" name="zip" onChange={this.handleChange} />
             </div>
             <div className="input_field">
