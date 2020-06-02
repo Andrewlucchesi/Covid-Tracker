@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Pie from 'react-chartjs-2'
+import Doughnut from 'react-chartjs-2'
 
 const data = {
   labels: [
@@ -45,7 +45,7 @@ const option = {
   }
 }
 
-class Piechart extends Component {
+class DoughnutChart extends Component {
 
   render() {
     return (
@@ -58,11 +58,11 @@ class Piechart extends Component {
             datasets: this.state.datasets
           }}
         /> */}
-        <Pie data={data} options={option} />
-        <br />
+        <Doughnut data={data} options={option} />
+        {/* <br /> */}
       </div>
     )
   }
 }
 
-export default Piechart
+export default DoughnutChart
