@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReportList from './ReportList' //Report list displays table with report data
 import Checkbox from '../../Symptom/Checkbox'
-import Piechart from '../../Symptom/Piechart'
+import DoughnutChart from '../../Symptom/Piechart'
 import { submitReport } from '../../store/actions/reportActions'
 
 import { compose } from 'redux'
@@ -54,7 +54,7 @@ class Report extends Component {
           <h4 className="center">Reported Data</h4>
           <h6>Recently Reported Cases (Past 24 Hours):</h6>   
           <ReportList reports={reports} />  
-          <Piechart />
+          <DoughnutChart />
         </div> 
       ) 
     }
