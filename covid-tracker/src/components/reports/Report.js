@@ -84,6 +84,6 @@ var beginningDateObject = new Date(beginningDate);
 //firestoreConnect listens to firebase, and updates store accordiningly
 export default compose(connect(mapStateToProps, mapDispatchToProps),
 firestoreConnect([
-    {collection: 'reports', where:['reportedAt', '>', beginningDateObject]} 
+    {collection: 'reports', where:['reportedAt', '>', beginningDateObject] } 
 ]
 ))(Report)
