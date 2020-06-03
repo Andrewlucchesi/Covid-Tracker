@@ -9,7 +9,6 @@ class Newcases extends Component {
     let NewData = [];
     let CountryStats = {};
     
-
     for(const entry of props.Data){
       if('Country_Code' in entry){
         let country = entry.Country_Code;
@@ -115,7 +114,8 @@ class Newcases extends Component {
           <form onSubmit={ this.handleSubmit }>  
             <div className="input-field"> 
               <label htmlFor="city">Search by city</label>
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <input type="text" onChange={this.handleChange} />
+                {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
             </div>
             <input type="submit" value="Search for Recently Reported Cases" />
           </form>
@@ -126,7 +126,7 @@ class Newcases extends Component {
   render () {
     return (
       <div>
-        <p>Choose a map of recent cases by country or search for recent cases by city</p>
+        <h5 className="center">Choose a map of recent cases by country or search for recent cases by city</h5>
         <button onClick={this.onClickMap}>Map</button>
         <button onClick={this.onClickTable}>Search by City</button>
         {this.state.showMap && <Map CountryData={this.state.Data}/>}

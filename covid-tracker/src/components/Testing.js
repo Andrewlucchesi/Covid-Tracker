@@ -68,7 +68,8 @@ class Testing extends Component {
         <form onSubmit={ this.handleSubmit }>  
           <div className="input-field"> 
             <label htmlFor="city">Enter a city in California</label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
+              <input type="text" onChange={this.handleChange} />
           </div>
           <input type="submit" value="Search for Covid-19 Testing Location" />
         </form>
