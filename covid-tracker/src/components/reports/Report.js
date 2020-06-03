@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReportList from './ReportList' //Report list displays table with report data
 import Checkbox from '../../Symptom/Checkbox'
-import DoughnutChart from '../../Symptom/Piechart'
+import DoughnutChart from '../../Symptom/DoughnutChart'
 import { submitReport } from '../../store/actions/reportActions'
 
 import { compose } from 'redux'
