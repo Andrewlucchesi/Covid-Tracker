@@ -35,8 +35,6 @@ class Testing extends Component {
     
     for(const testLoc of this.state.TestingLocs){
       let address = (testLoc.physical_address)[0];
-      console.log((address.city).toLowerCase());
-      console.log((this.state.value).toLowerCase());
 
       if(((address.city).toLowerCase()) === (this.state.value).toLowerCase()){
         cityFound = true;
@@ -47,13 +45,17 @@ class Testing extends Component {
         children.push(<td>{address.address_1}</td>);
         children.push(<td>{address.city}</td>);
         children.push(<td>{address.postal_code}</td>);
-        table.push(<tr key={key}>{children}</tr>);
+        table.push(<tbody><tr key={key}>{children}</tr></tbody>);
       }
     }
 
     if(!cityFound){
       return(
-        <p>Sorry, we couldn't find any testing locations in that city</p>
+        <tbody>
+        <tr>
+          <td>Sorry we couldn't find any testing locations in that city</td>
+          </tr>
+        </tbody>
       )
     }
     else{
