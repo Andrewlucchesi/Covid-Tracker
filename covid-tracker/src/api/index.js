@@ -11,18 +11,9 @@ export const fetchTestingLocs = async () => {
   } catch (error) {}
 }
 
-export const fetchUSACountyData = async () => {
-  try {
-    const { data: {message}} = await axios.get(countyUrl);
-    console.log(message);
-    return message;
-  } catch (error) {}
-}
-
 export const fetchCountryData = async () => {
   try {
     const { data: {Countries}} = await axios.get(worldUrl);
-    console.log(Countries);
     return Countries;
   } catch (error) {}
 }
