@@ -64,21 +64,21 @@ class Newcases extends Component {
     let cityFound = false;
     let caseCount = 0;
     let lastID = undefined;
+
     for(const entry of this.state.cases){
       let city = entry.city;
-      if(city == undefined)
+      if(city === undefined)
         continue;
+
       if(((city).toLowerCase()) === (this.state.value).toLowerCase()){
         cityFound = true;
         let children = [];
         let key = entry.id;
-        if(key == lastID)
-          {
+        if(key === lastID){
             continue;
             lastID = key;
-          }
-        else
-        {
+        }
+        else{
           lastID = key;
         }
         children.push(<td>{entry.city}</td>);
@@ -96,13 +96,9 @@ class Newcases extends Component {
       return(
         <tbody>
           <tr>
-            <td>
-              No recently reported cases in that city!
-            </td>
+            <td>No recently reported cases in that city!</td>
           </tr>
         </tbody>
-
-        
       )
     }
     else{
@@ -133,7 +129,6 @@ class Newcases extends Component {
             <div className="input-field"> 
               <label htmlFor="city">Search by city</label>
                 <input type="text" onChange={this.handleChange} />
-                {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
             </div>
             <input type="submit" value="Search for Recently Reported Cases" />
           </form>
