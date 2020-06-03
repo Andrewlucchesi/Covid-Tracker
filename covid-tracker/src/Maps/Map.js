@@ -16,12 +16,10 @@ export class MapContainer extends Component {
       selectedPlace: "",
       countryData: props.CountryData,
     };
-    console.log(this.state.countryData);
   }
 
   onMarkerClick(props, marker, e) {
     let text = "";
-    console.log(this.state.countryData);
 
     if(this.state.countryData == null){
       text = "Sorry, data is not available right now. Please try later";
@@ -29,8 +27,7 @@ export class MapContainer extends Component {
     else{
       for(const country of this.state.countryData){
         if(country.CountryCode === props.country){
-          console.log(country.Country);
-          text =  "Total Cases: " + country.TotalConfirmed + "\n Total Deaths: " + country.TotalDeaths;
+          text = "Country: " + country.CountryCode + ' ' + "Total Cases: " + country.TotalConfirmed + "\n Total Deaths: " + country.TotalDeaths;
           break;
         }
       }
