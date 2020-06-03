@@ -1,5 +1,24 @@
 import React, { Component } from 'react'
 import Pie from 'react-chartjs-2'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+
+//Check if arrays are equal
+var arraysMatch = function (arr1, arr2) {
+
+	// Check if the arrays are the same length
+	if (arr1.length !== arr2.length) return false;
+
+	// Check if all items exist and are in the same order
+	for (var i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) return false;
+	}
+
+	// Otherwise, return true
+	return true;
+
+};
 
 class Piechart extends Component {
   countType(type) {
@@ -9,17 +28,36 @@ class Piechart extends Component {
     return countTypes.length;
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.stats){const statArray = [
+      this.props.stats.breathCount,
+      this.props.stats.coughCount,
+      this.props.stats.fatigueCount,
+      this.props.stats.feverCount,
+      this.props.stats.muscleCount,
+      this.props.stats.soreThroatCount,
+      this.props.stats.tasteCount
+    ]
+    if (!arraysMatch(prevState.datasets[0].data, statArray)){
+      this.setState(prevState =>{
+       return{ datasets: [{ 
+          ...prevState.datasets[0], 
+          data: statArray
+        }]};
+      }); 
+    }}}; 
+ 
   constructor(props){
     super(props)
       this.state = {
         labels: [
-          'Fever', 
-          'Cough', 
-          'Sore Throat', 
           'Shortness of breath', 
+          'Cough',
           'Fatigue',
+          'Fever',
+          'Muscle Aches',  
+          'Sore Throat', 
           'New Loss of taste or smell',
-          'Muscle Aches'
         ],
 
         datasets: [{
@@ -47,8 +85,12 @@ class Piechart extends Component {
   }
 
   render() {
+    var reportTotal = ""
+    if(this.props.stats)
+      reportTotal =this.props.stats.reportCount;
     return (
       <div>
+        <b>Total Number of Reports: {reportTotal} </b> 
         <hr  style={{ color: '#9e9e9e', height: .1,}}/>
         <h6>Symptom Statistics:</h6>
         <Pie
@@ -63,4 +105,14 @@ class Piechart extends Component {
   }
 }
 
-export default Piechart
+const mapStateToProps = (state) => {
+  return {
+    stats: state.firestore.data['stats']
+  }
+} 
+
+export default compose(connect(mapStateToProps),
+firestoreConnect([
+    {collection: 'reports', doc: '--stats--', storeAs: 'stats'} 
+]
+))(Piechart)
