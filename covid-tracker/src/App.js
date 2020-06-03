@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 
-import {  fetchCountryData, fetchTestingLocs, fetchUSACountyData } from './api'
+import {  fetchCountryData, fetchTestingLocs } from './api'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home'
 import Testing from './components/Testing'
@@ -23,13 +23,12 @@ class App extends Component{
 componentDidMount = async () => {
     
     const CountryData = await fetchCountryData();
-    const CountyData = await fetchUSACountyData();
+    
     const TestingLocs = await fetchTestingLocs();
 
     this.setState({ 
       CountryData: CountryData,
       Disabled: false,
-      CountyData: CountyData,
       TestingLocs: TestingLocs});
   }
 
@@ -39,7 +38,6 @@ componentDidMount = async () => {
     }
 
     const { reports } = this.props;
-    console.log(reports);
     
     return (
       <BrowserRouter >
@@ -76,4 +74,3 @@ firestoreConnect([
   {collection: 'reports'} 
 ]
 ))(App)
-
