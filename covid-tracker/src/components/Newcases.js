@@ -4,7 +4,6 @@ import Map from '../Maps/Map'
 class Newcases extends Component {
   
   constructor(props){
-    console.log(props.Data);
     super(props);
     let NewData = [];
     let CountryStats = {};
@@ -56,7 +55,7 @@ class Newcases extends Component {
 
     if(!this.state.showText){
       return( 
-        <p></p> 
+        <tbody></tbody>
       )
     }
 
@@ -66,6 +65,8 @@ class Newcases extends Component {
 
     for(const entry of this.state.cases){
       let city = entry.city;
+      if(city == undefined)
+        continue;
       if(((city).toLowerCase()) === (this.state.value).toLowerCase()){
         cityFound = true;
         let children = [];
@@ -73,7 +74,8 @@ class Newcases extends Component {
 
         children.push(<td>{entry.city}</td>);
         children.push(<td>{entry.zip}</td>);
-        table.push(<tr key={key}>{children}</tr>);
+        
+        table.push(<tbody><tr key={key}>{children}</tr></tbody>);
         caseCount++;
       }
 
@@ -84,7 +86,11 @@ class Newcases extends Component {
 
     if(!cityFound){
       return(
-        <p>No recently reported cases in that city!</p>
+        <tbody>
+        <tr>
+          <td>No recently reported cases in that city!</td>
+          </tr>
+        </tbody>
       )
     }
     else{
