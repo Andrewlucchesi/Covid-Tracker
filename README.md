@@ -1,6 +1,6 @@
 # Covid-Tracker
 
-### Install node by running following in the terminal:
+### Install Node.js by running following in the terminal:
 ```
 brew install node
 ```
