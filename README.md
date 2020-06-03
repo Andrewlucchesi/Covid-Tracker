@@ -5,7 +5,7 @@
 brew install node
 ```
 
-### To install this app:
+### Package Managers needed to run this app:
 1. HTTP client for the browser and node.js:
    ```
    npm i axios
