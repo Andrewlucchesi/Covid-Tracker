@@ -19,7 +19,8 @@ class Report extends Component {
     handleSubmit =(e) => {
         e.preventDefault();
        // console.log(this.state)
-       this.props.submitReport(this.state)
+       this.props.submitReport(this.state);
+       window.location.reload(false);
     }
 
     render () {
