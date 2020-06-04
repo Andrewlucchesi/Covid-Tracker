@@ -29,7 +29,7 @@ class Report extends Component {
       return (
             
         <div className="container">
-          <h4 className="center">Report Symptom</h4>
+          <h4 className="center">Report Cases / Symptoms</h4>
           <h5> If you or someone in your immediate family has contracted covid-19, you may use this page to report a diagnosis. </h5>
           <p>This will be used to help track cases as they spread through local communities</p>
           
