@@ -51,7 +51,6 @@ class Report extends Component {
           </form>
 
           <h4 className="center">Reported Data</h4>
-          <h6>Recently Reported Cases (Past 24 Hours):</h6>   
           <DoughnutChart />
         </div> 
       ) 
