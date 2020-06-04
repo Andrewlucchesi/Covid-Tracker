@@ -8,12 +8,19 @@ import { firestoreConnect } from 'react-redux-firebase'
 
 class Report extends Component {
 
-    state = {}
+    state = {cough: false, fatigue: false, fever: false, taste: false, soreThroat: false, muscle: false, breath: false}
 
     handleChange =(e) => {
         this.setState({
             [e.target.id]: e.target.value
          })       
+    }
+
+    handleCheck =(e) => {
+      const field = e.target.id
+      this.setState({
+        [field]: !this.state[field]
+      })
     }
 
     handleSubmit =(e) => {
@@ -34,7 +41,7 @@ class Report extends Component {
           
           <form onSubmit={ this.handleSubmit }>
             <label>Describe your symptom(s):</label>
-            <Checkbox onChange={this.handleChange} />  
+            <Checkbox onChange={this.handleCheck} />  
             <div className="input-field"> 
               <label htmlFor="city">City</label>
                 <input type="text" id="city" name="city" onChange={this.handleChange} required />
