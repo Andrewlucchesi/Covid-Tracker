@@ -8,7 +8,7 @@ import {  fetchCountryData, fetchTestingLocs } from './api'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home'
 import Testing from './components/Testing'
-import Report from './components/reports/Report'
+import Report from './components/Report'
 import Newcases from './components/Newcases'
 
 class App extends Component{
