@@ -43,7 +43,7 @@ class Report extends Component {
               <label htmlFor="Zipcode">Zipcode</label>
                 <input type="number" id="zip" name="zip" onChange={this.handleChange} />
             </div>
-            <div className="input_field">
+            <div className="input-field">
               <label htmlFor="country">Country Code</label>
                 <input type="text" id="Country_Code" name="country" onChange={this.handleChange} />
             </div>
