@@ -37,7 +37,7 @@ class Report extends Component {
             <Checkbox onChange={this.handleChange} />  
             <div className="input-field"> 
               <label htmlFor="city">City</label>
-                <input type="text" id="city" name="city" onChange={this.handleChange} />
+                <input type="text" id="city" name="city" onChange={this.handleChange} required />
             </div>
             <div className="input-field">     
               <label htmlFor="Zipcode">Zipcode</label>
@@ -45,7 +45,7 @@ class Report extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="country">Country Code</label>
-                <input type="text" id="Country_Code" name="country" onChange={this.handleChange} />
+                <input type="text" id="Country_Code" name="country" onChange={this.handleChange} required/>
             </div>
             <input type="submit" value="Report Case of Covid-19" />
           </form>
