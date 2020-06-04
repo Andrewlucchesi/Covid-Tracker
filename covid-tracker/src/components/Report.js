@@ -27,10 +27,11 @@ class Report extends Component {
         e.preventDefault();
        // console.log(this.state)
        this.props.submitReport(this.state);
-       window.location.reload(false);
+       //window.location.reload(false); Caused submission issues
     }
 
     render () {
+      console.log(this.state)
       const { reports } = this.props;
       return (
             
