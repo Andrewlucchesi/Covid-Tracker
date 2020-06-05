@@ -9,6 +9,12 @@ class Newcases extends Component {
     let NewData = [];
     let CountryStats = {};
     
+    //If no props.Data exists, forces browser back to homepage (prevents crash)
+    if(!props.Data){
+    this.props.history.replace('/');
+    window.location.reload(false);
+    }
+
     for(const entry of props.Data){
       if('Country_Code' in entry){
         let country = entry.Country_Code;
