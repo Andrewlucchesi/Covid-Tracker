@@ -82,7 +82,7 @@ class Newcases extends Component {
         let key = entry.id;
         if(key === lastID){
             continue;
-            lastID = key;
+            // lastID = key;
         }
         else{
           lastID = key;
