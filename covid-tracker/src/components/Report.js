@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Checkbox from '../Symptom/Checkbox'
 import DoughnutChart from '../Symptom/DoughnutChart'
 import { submitReport } from '../store/actions/reportActions'
-import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
+// import { compose } from 'redux'
+// import { firestoreConnect } from 'react-redux-firebase'
 
 class Report extends Component {
 
@@ -32,7 +32,7 @@ class Report extends Component {
 
     render () {
       console.log(this.state)
-      const { reports } = this.props;
+      // const { reports } = this.props;
       return (
             
         <div className="container">
