@@ -68,9 +68,13 @@ const mapStateToProps = (state) => {
   }
 }
 
+//86400000 is 1 day in ms
+var beginningDate = Date.now() - 86400000;
+var beginningDateObject = new Date(beginningDate);
+
 //firestoreConnect triggers firebase-state to update when firebase collection changes
 export default compose(connect(mapStateToProps),
 firestoreConnect([
-  {collection: 'reports'} 
+    {collection: 'reports', where:['reportedAt', '>', beginningDateObject] } 
 ]
 ))(App)

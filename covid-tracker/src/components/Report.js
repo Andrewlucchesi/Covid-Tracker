@@ -65,14 +65,7 @@ class Report extends Component {
     }
 }
 
-//Updates props when store changes. Takes reports data from store.
-const mapStateToProps = (state) => {
-  return {
-    reports: state.firestore.ordered.reports
-  }
-}
-
-//Dispatches actions to the store: submits report when submitreport button is pressed
+//Dispatches actions to the store: submits report when submit report button is pressed
 const mapDispatchToProps = (dispatch) => {
   return {
     submitReport: (report) => dispatch(submitReport(report))
@@ -82,13 +75,6 @@ const mapDispatchToProps = (dispatch) => {
 //firestoreConnect triggers firebase-state to update when firebase collection changes
 //Redux Uses reducers to manage states. 
 
-//86400000 is 1 day in ms
-var beginningDate = Date.now() - 86400000;
-var beginningDateObject = new Date(beginningDate);
 
 //firestoreConnect listens to firebase, and updates store accordiningly
-export default compose(connect(mapStateToProps, mapDispatchToProps),
-firestoreConnect([
-    {collection: 'reports', where:['reportedAt', '>', beginningDateObject] } 
-]
-))(Report)
+export default connect(null,mapDispatchToProps)(Report)
