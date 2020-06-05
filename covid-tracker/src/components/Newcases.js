@@ -8,6 +8,7 @@ class Newcases extends Component {
     super(props);
     let NewData = [];
     let CountryStats = {};
+    let entries = {};
     
     //If no props.Data exists, forces browser back to homepage (prevents crash)
     if(!props.Data){
@@ -16,8 +17,13 @@ class Newcases extends Component {
     }
 
     for(const entry of props.Data){
+      if(entry.id in entries)
+        continue;
+      
       if('Country_Code' in entry){
         let country = entry.Country_Code;
+        let id = entry.id;
+        entries[id] = country;
         if(country in CountryStats){
           CountryStats[country] = CountryStats[country] + 1;
         }
@@ -69,7 +75,7 @@ class Newcases extends Component {
     let table = [];
     let cityFound = false;
     let caseCount = 0;
-    let lastID = undefined;
+    let IDs = {};
 
     for(const entry of this.state.cases){
       let city = entry.city;
@@ -80,12 +86,11 @@ class Newcases extends Component {
         cityFound = true;
         let children = [];
         let key = entry.id;
-        if(key === lastID){
+        if(key in IDs){
             continue;
-            // lastID = key;
         }
         else{
-          lastID = key;
+          IDs[key] = city;
         }
         children.push(<td>{entry.city}</td>);
         children.push(<td>{entry.zip}</td>);
