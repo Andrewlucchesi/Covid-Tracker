@@ -8,10 +8,22 @@ class Newcases extends Component {
     super(props);
     let NewData = [];
     let CountryStats = {};
+    let entries = {};
     
+    //If no props.Data exists, forces browser back to homepage (prevents crash)
+    if(!props.Data){
+    this.props.history.replace('/');
+    window.location.reload(false);
+    }
+
     for(const entry of props.Data){
+      if(entry.id in entries)
+        continue;
+      
       if('Country_Code' in entry){
         let country = entry.Country_Code;
+        let id = entry.id;
+        entries[id] = country;
         if(country in CountryStats){
           CountryStats[country] = CountryStats[country] + 1;
         }
@@ -56,24 +68,33 @@ class Newcases extends Component {
 
     if(!this.state.showText){
       return( 
-        <p></p> 
+        <tbody></tbody>
       )
     }
 
     let table = [];
     let cityFound = false;
     let caseCount = 0;
+    let IDs = {};
 
     for(const entry of this.state.cases){
       let city = entry.city;
+      if(city === undefined)
+        continue;
+
       if(((city).toLowerCase()) === (this.state.value).toLowerCase()){
         cityFound = true;
         let children = [];
         let key = entry.id;
-
+        if(key in IDs){
+            continue;
+        }
+        else{
+          IDs[key] = city;
+        }
         children.push(<td>{entry.city}</td>);
         children.push(<td>{entry.zip}</td>);
-        table.push(<tr key={key}>{children}</tr>);
+        table.push(<tbody><tr key={key}>{children}</tr></tbody>);
         caseCount++;
       }
 
@@ -84,7 +105,11 @@ class Newcases extends Component {
 
     if(!cityFound){
       return(
-        <p>No recently reported cases in that city!</p>
+        <tbody>
+          <tr>
+            <td>No recently reported cases in that city!</td>
+          </tr>
+        </tbody>
       )
     }
     else{
@@ -115,7 +140,6 @@ class Newcases extends Component {
             <div className="input-field"> 
               <label htmlFor="city">Search by city</label>
                 <input type="text" onChange={this.handleChange} />
-                {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
             </div>
             <input type="submit" value="Search for Recently Reported Cases" />
           </form>

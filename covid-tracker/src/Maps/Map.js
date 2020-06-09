@@ -19,7 +19,7 @@ export class MapContainer extends Component {
     console.log(this.state.countryData);
   }
 
-  onMarkerClick(props, marker, e) {
+  onMarkerClick(props, marker) {
     let text = "";
     console.log(this.state.countryData);
 
