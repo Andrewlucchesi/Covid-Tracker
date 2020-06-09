@@ -105,7 +105,6 @@ class DoughnutChart extends Component {
         <hr style={{ color: '#9e9e9e', height: .1,}}/>
         <h6>Symptom Statistics:</h6>
         <Doughnut data={{labels: this.state.labels, datasets: this.state.datasets}} options={option} />
-        {/* <br /> */}
       </div>
     )
   }
@@ -118,7 +117,9 @@ const mapStateToProps = (state) => {
 } 
 
 export default compose(connect(mapStateToProps),
-  firestoreConnect([
-    {collection: 'reports', doc: '--stats--', storeAs: 'stats'} 
-  ])
+  firestoreConnect([{
+    collection: 'reports', 
+    doc: '--stats--', 
+    storeAs: 'stats'
+  }])
 )(DoughnutChart)
