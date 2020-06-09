@@ -1,5 +1,5 @@
 const initState ={
-    reports: []
+  reports: []
 }
 
 const reportReducer = (state = initState, action) => {
