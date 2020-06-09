@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Map from '../Maps/Map'
 
 class Newcases extends Component {
-  
   constructor(props){
     console.log(props.Data);
     super(props);
@@ -12,8 +11,8 @@ class Newcases extends Component {
     
     //If no props.Data exists, forces browser back to homepage (prevents crash)
     if(!props.Data){
-    this.props.history.replace('/');
-    window.location.reload(false);
+      this.props.history.replace('/');
+      window.location.reload(false);
     }
 
     for(const entry of props.Data){
@@ -86,12 +85,14 @@ class Newcases extends Component {
         cityFound = true;
         let children = [];
         let key = entry.id;
+
         if(key in IDs){
-            continue;
+          continue;
         }
         else{
           IDs[key] = city;
         }
+
         children.push(<td>{entry.city}</td>);
         children.push(<td>{entry.zip}</td>);
         table.push(<tbody><tr key={key}>{children}</tr></tbody>);
@@ -99,7 +100,7 @@ class Newcases extends Component {
       }
 
       if(caseCount >= 10){
-          break;
+        break;
       }
     }
 
@@ -117,14 +118,14 @@ class Newcases extends Component {
     }
   }
 
-  onClickMap = (e) => {
+  onClickMap = () => {
     this.setState({
       showMap: !this.state.showMap,
       showTable: false
     })
   }
 
-  onClickTable = (e) => {
+  onClickTable = () => {
     this.setState({
       showTable: !this.state.showTable,
       showMap: false
@@ -139,7 +140,7 @@ class Newcases extends Component {
           <form onSubmit={ this.handleSubmit }>  
             <div className="input-field"> 
               <label htmlFor="city">Search by city</label>
-                <input type="text" onChange={this.handleChange} />
+              <input type="text" onChange={this.handleChange} />
             </div>
             <input type="submit" value="Search for Recently Reported Cases" />
           </form>
