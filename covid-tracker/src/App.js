@@ -21,7 +21,6 @@ class App extends Component{
   }
   
 componentDidMount = async () => {
-    
     const CountryData = await fetchCountryData();
     const TestingLocs = await fetchTestingLocs();
 
@@ -74,10 +73,6 @@ var beginningDateObject = new Date(beginningDate);
 export default compose(connect(mapStateToProps),
   firestoreConnect([{
     collection: 'reports', 
-    where:[
-      'reportedAt', 
-      '>', 
-      beginningDateObject
-    ]
+    where:['reportedAt', '>', beginningDateObject]
   }])
 )(App)
