@@ -6,7 +6,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 
 //Check if arrays are equal
 var arraysMatch = function (arr1, arr2) {
-
 	// Check if the arrays are the same length
 	if (arr1.length !== arr2.length) return false;
 
@@ -14,10 +13,7 @@ var arraysMatch = function (arr1, arr2) {
 	for (var i = 0; i < arr1.length; i++) {
 		if (arr1[i] !== arr2[i]) return false;
 	}
-
-	// Otherwise, return true
 	return true;
-
 };
 
 const option = {
@@ -30,7 +26,6 @@ const option = {
         var currentValue = dataset.data[tooltipItem.index];
         var percentage = parseFloat((currentValue/total*100).toFixed(1));
         return currentValue + ' (' + percentage + '%)';
-        // return percentage+ '%';
       },
       title: function(tooltipItem, data) {
         return data.labels[tooltipItem[0].index];
@@ -49,39 +44,43 @@ class DoughnutChart extends Component {
 
   //Re-renders Pichart when stats change
   componentDidUpdate(prevProps, prevState){
-    if(this.props.stats){const statArray = [
-      this.props.stats.breathCount,
-      this.props.stats.coughCount,
-      this.props.stats.fatigueCount,
-      this.props.stats.feverCount,
-      this.props.stats.muscleCount,
-      this.props.stats.soreThroatCount,
-      this.props.stats.tasteCount
-    ]
-    if (!arraysMatch(prevState.datasets[0].data, statArray)){
-      this.setState(prevState =>{
-       return{ datasets: [{ 
-          ...prevState.datasets[0], 
-          data: statArray
-        }]};
-      }); 
-    }}}; 
+    if(this.props.stats){
+      const statArray = [
+        this.props.stats.breathCount,
+        this.props.stats.coughCount,
+        this.props.stats.fatigueCount,
+        this.props.stats.feverCount,
+        this.props.stats.muscleCount,
+        this.props.stats.soreThroatCount,
+        this.props.stats.tasteCount
+      ]
+      if (!arraysMatch(prevState.datasets[0].data, statArray)){
+        this.setState(prevState => {
+          return{ 
+            datasets: [{ 
+              ...prevState.datasets[0], 
+              data: statArray
+            }]
+          };
+        }); 
+      }
+    }
+  }; 
  
   constructor(props){
     super(props)
       this.state = {
         labels: [
-          'Shortness of breath', 
           'Cough',
           'Fatigue',
           'Fever',
-          'Muscle Aches',  
-          'Sore Throat', 
-          'New Loss of taste or smell',
+          'Loss of Taste or Smell',
+          'Muscle Aches', 
+          'Shortness of breath',  
+          'Sore Throat'
         ],
 
         datasets: [{
-          // data: [1, 3, 5, 2, 4, 3, 2],
           backgroundColor: [
             '#374c80', 
             '#6e5193', 
@@ -97,19 +96,14 @@ class DoughnutChart extends Component {
 
   render() {
     var reportTotal = ""
-    if(this.props.stats)
+    if(this.props.stats){
       reportTotal =this.props.stats.reportCount;
+    }
     return (
       <div>
         <b>Total Number of Reports: {reportTotal} </b> 
-        <hr  style={{ color: '#9e9e9e', height: .1,}}/>
+        <hr style={{ color: '#9e9e9e', height: .1,}}/>
         <h6>Symptom Statistics:</h6>
-        {/* <Pie
-          data={{
-            labels: this.state.labels,
-            datasets: this.state.datasets
-          }}
-        /> */}
         <Doughnut data={{labels: this.state.labels, datasets: this.state.datasets}} options={option} />
         {/* <br /> */}
       </div>
@@ -124,7 +118,7 @@ const mapStateToProps = (state) => {
 } 
 
 export default compose(connect(mapStateToProps),
-firestoreConnect([
+  firestoreConnect([
     {collection: 'reports', doc: '--stats--', storeAs: 'stats'} 
-]
-))(DoughnutChart)
+  ])
+)(DoughnutChart)
