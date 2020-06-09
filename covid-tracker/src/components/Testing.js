@@ -35,9 +35,8 @@ class Testing extends Component {
     
     for(const testLoc of this.state.TestingLocs){
       let address = (testLoc.physical_address)[0];
+      if(!address.city) continue;
 
-      if(!address.city)
-        continue;
       if(((address.city).toLowerCase()) === (this.state.value).toLowerCase()){
         cityFound = true;
         let children = [];
@@ -54,8 +53,8 @@ class Testing extends Component {
     if(!cityFound){
       return(
         <tbody>
-        <tr>
-          <td>Sorry we couldn't find any testing locations in that city</td>
+          <tr>
+            <td>Sorry we couldn't find any testing locations in that city</td>
           </tr>
         </tbody>
       )
@@ -72,8 +71,7 @@ class Testing extends Component {
         <form onSubmit={ this.handleSubmit }>  
           <div className="input-field"> 
             <label htmlFor="city">Enter a city in California</label>
-              {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
-              <input type="text" onChange={this.handleChange} />
+            <input type="text" onChange={this.handleChange} />
           </div>
           <input type="submit" value="Search for Covid-19 Testing Location" />
         </form>
