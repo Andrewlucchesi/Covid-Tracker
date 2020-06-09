@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 
-import {  fetchCountryData, fetchTestingLocs } from './api'
+import { fetchCountryData, fetchTestingLocs } from './api'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home'
 import Testing from './components/Testing'
@@ -12,18 +12,17 @@ import Report from './components/Report'
 import Newcases from './components/Newcases'
 
 class App extends Component{
-    state = {
-      CountryData: [],
-      CountyData: [],
-      TestingLocs: [],
-      Disabled: true,
-      Reports: [],
+  state = {
+    CountryData: [],
+    CountyData: [],
+    TestingLocs: [],
+    Disabled: true,
+    Reports: [],
   }
   
 componentDidMount = async () => {
     
     const CountryData = await fetchCountryData();
-    
     const TestingLocs = await fetchTestingLocs();
 
     this.setState({ 
@@ -34,11 +33,10 @@ componentDidMount = async () => {
 
   render () {  
     if((this.state.Disabled)){
-        return <div></div>;
+      return <div></div>;
     }
 
     const { reports } = this.props;
-    
     return (
       <BrowserRouter >
         <div className="App">
@@ -74,7 +72,12 @@ var beginningDateObject = new Date(beginningDate);
 
 //firestoreConnect triggers firebase-state to update when firebase collection changes
 export default compose(connect(mapStateToProps),
-firestoreConnect([
-    {collection: 'reports', where:['reportedAt', '>', beginningDateObject] } 
-]
-))(App)
+  firestoreConnect([{
+    collection: 'reports', 
+    where:[
+      'reportedAt', 
+      '>', 
+      beginningDateObject
+    ]
+  }])
+)(App)
