@@ -96,12 +96,10 @@ class DoughnutChart extends Component {
 
   render() {
     var reportTotal = ""
-    if(this.props.stats){
-      reportTotal =this.props.stats.reportCount;
-    }
+    if(this.props.stats){reportTotal =this.props.stats.reportCount;}
     return (
       <div>
-        <b>Total Number of Reports: {reportTotal} </b> 
+        <b>Total Number of Reports: {reportTotal}</b> 
         <hr style={{ color: '#9e9e9e', height: .1,}}/>
         <h6>Symptom Statistics:</h6>
         <Doughnut data={{labels: this.state.labels, datasets: this.state.datasets}} options={option} />
