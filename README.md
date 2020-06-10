@@ -1,4 +1,5 @@
 # Covid-Tracker
+Welcome to Covid-Tracker! Our app seeks to provide comprehensive information about the novel Coronavirus tracking the progress of the virus throughout the world. Covid-Tracker allows users to self-report a case and accompanying symptoms. The app also displays information about cases throughout the world, most common reported symptoms, and even allows users to find testing locations near them. To get started, install the following packages:
 
 ### Install Node.js:
 ```
