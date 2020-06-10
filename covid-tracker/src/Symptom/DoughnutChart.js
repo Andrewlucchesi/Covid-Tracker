@@ -46,13 +46,13 @@ class DoughnutChart extends Component {
   componentDidUpdate(prevProps, prevState){
     if(this.props.stats){
       const statArray = [
-        this.props.stats.breathCount,
         this.props.stats.coughCount,
         this.props.stats.fatigueCount,
         this.props.stats.feverCount,
+        this.props.stats.tasteCount,
         this.props.stats.muscleCount,
+        this.props.stats.breathCount,
         this.props.stats.soreThroatCount,
-        this.props.stats.tasteCount
       ]
       if (!arraysMatch(prevState.datasets[0].data, statArray)){
         this.setState(prevState => {
