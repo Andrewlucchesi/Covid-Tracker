@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <nav className="nav-wrapper red lighten-1">
       <div className="container">
-        <a className="navbar-brand" href="/#">Corona-Tracker</a>
+        <a className="navbar-brand" href="/#">Covid-Tracker</a>
         <ul className="right">
           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/testing">Testing Locations</NavLink></li>
