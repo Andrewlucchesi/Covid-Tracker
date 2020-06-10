@@ -13,14 +13,14 @@ export const submitReport = (report) => {
     const reportRef = firestore.collection('reports').doc(`${Math.random()}`);
 
     const batch = firestore.batch();
-    batch.set(reportRef, {...report,reportedAt: firestore.FieldValue.serverTimestamp()});
+    batch.set(reportRef, {...report, reportedAt: firestore.FieldValue.serverTimestamp()});
 
     if(report.fever && report.fever === true){
-      batch.set(statsRef, { feverCount: increment }, {merge: true} );
+      batch.set(statsRef, { feverCount: increment }, { merge: true } );
     }
     
     if(report.cough && report.cough === true){
-      batch.set(statsRef, { coughCount: increment }, {merge: true} );
+      batch.set(statsRef, { coughCount: increment }, { merge: true } );
     }
     
     if(report.soreThroat && report.soreThroat === true){
